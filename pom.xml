@@ -32,7 +32,7 @@
 	</repositories>
 
 	<scm>
-		<developerConnection>scm:git:https://github.com/philipsorst/utils.git</developerConnection>
+		<developerConnection>scm:git:https://github.com/dontdrinkandroot/utils.git</developerConnection>
 	</scm>
 
 	<build>
