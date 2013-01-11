@@ -17,7 +17,6 @@
  */
 package net.dontdrinkandroot.utils.lang;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -56,36 +55,27 @@ public class SerializationUtils extends org.apache.commons.lang3.SerializationUt
 	}
 
 
+	/**
+	 * Convenience method that does not require the input to implement Serializable. Of course it
+	 * still needs to be serializable.
+	 * 
+	 * @see SerializationUtils#serialize(Serializable, OutputStream)
+	 */
 	public static void serialize(Object obj, OutputStream outputStream) {
 
-		if (outputStream == null) {
-			throw new IllegalArgumentException("The OutputStream must not be null");
-		}
-		ObjectOutputStream out = null;
-		try {
-			/* stream closed in the finally */
-			out = new ObjectOutputStream(outputStream);
-			out.writeObject(obj);
-
-		} catch (IOException ex) {
-			throw new SerializationException(ex);
-		} finally {
-			try {
-				if (out != null) {
-					out.close();
-				}
-			} catch (IOException ex) {
-				/* ignore close exception */
-			}
-		}
+		SerializationUtils.serialize((Serializable) obj, outputStream);
 	}
 
 
+	/**
+	 * Convenience method that does not require the input to implement Serializable. Of course it
+	 * still needs to be serializable.
+	 * 
+	 * @see SerializationUtils#serialize(Serializable)
+	 */
 	public static byte[] serialize(Object obj) {
 
-		ByteArrayOutputStream baos = new ByteArrayOutputStream(512);
-		serialize(obj, baos);
-		return baos.toByteArray();
+		return SerializationUtils.serialize((Serializable) obj);
 	}
 
 }
