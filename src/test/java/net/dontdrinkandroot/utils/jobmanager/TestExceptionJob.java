@@ -17,14 +17,14 @@
  */
 package net.dontdrinkandroot.utils.jobmanager;
 
-import net.dontdrinkandroot.utils.oldprogressmonitor.ProgressMonitor;
-import net.dontdrinkandroot.utils.oldprogressmonitor.impl.SimpleMonitor;
+import net.dontdrinkandroot.utils.progressmonitor.ProgressMonitor;
 import net.dontdrinkandroot.utils.progressmonitor.ProgressStatus;
+import net.dontdrinkandroot.utils.progressmonitor.impl.SimpleProgressMonitor;
 
 
 public class TestExceptionJob extends AbstractJob<Void> {
 
-	private final ProgressMonitor monitor = new SimpleMonitor();
+	private final ProgressMonitor monitor = new SimpleProgressMonitor();
 
 
 	public TestExceptionJob() {

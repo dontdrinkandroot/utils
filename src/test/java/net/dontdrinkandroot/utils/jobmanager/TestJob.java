@@ -18,16 +18,16 @@
 package net.dontdrinkandroot.utils.jobmanager;
 
 import net.dontdrinkandroot.utils.Percent;
-import net.dontdrinkandroot.utils.oldprogressmonitor.ProgressMonitor;
-import net.dontdrinkandroot.utils.oldprogressmonitor.impl.SimpleMonitor;
+import net.dontdrinkandroot.utils.progressmonitor.ProgressMonitor;
 import net.dontdrinkandroot.utils.progressmonitor.ProgressStatus;
+import net.dontdrinkandroot.utils.progressmonitor.impl.SimpleProgressMonitor;
 
 
 public class TestJob extends AbstractJob<Integer> {
 
 	private final Integer i;
 
-	private final ProgressMonitor monitor = new SimpleMonitor();
+	private final ProgressMonitor monitor = new SimpleProgressMonitor();
 
 
 	public TestJob(final Integer i) {
@@ -93,6 +93,7 @@ public class TestJob extends AbstractJob<Integer> {
 	}
 
 
+	@Override
 	public ProgressStatus getProgressStatus() {
 
 		return this.monitor.getProgressStatus();
