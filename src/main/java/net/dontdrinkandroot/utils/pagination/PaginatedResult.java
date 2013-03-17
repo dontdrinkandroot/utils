@@ -7,7 +7,7 @@ public class PaginatedResult<T> {
 
 	private final Pagination pagination;
 
-	List<T> entries;
+	private final List<T> entries;
 
 
 	public PaginatedResult(Pagination pagination, List<T> entries) {
