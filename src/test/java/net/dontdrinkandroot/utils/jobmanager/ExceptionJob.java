@@ -17,79 +17,26 @@
  */
 package net.dontdrinkandroot.utils.jobmanager;
 
-import net.dontdrinkandroot.utils.Percent;
 import net.dontdrinkandroot.utils.progressmonitor.ProgressMonitor;
 import net.dontdrinkandroot.utils.progressmonitor.ProgressStatus;
 import net.dontdrinkandroot.utils.progressmonitor.impl.SimpleProgressMonitor;
 
 
-public class TestJob extends AbstractJob<Integer> {
-
-	private final Integer i;
+public class ExceptionJob extends AbstractJob<Void> {
 
 	private final ProgressMonitor monitor = new SimpleProgressMonitor();
 
 
-	public TestJob(final Integer i) {
+	public ExceptionJob() {
 
-		super("testjob." + i);
-
-		this.i = i;
+		super("testjob.exception");
 	}
 
 
 	@Override
-	protected Integer doRun() {
+	protected Void doRun() throws Exception {
 
-		try {
-			this.monitor.setMessage("Preparing");
-			Thread.sleep(100L);
-			this.monitor.setMessage("Done");
-			this.monitor.setProgress(Percent.HUNDRED);
-		} catch (final InterruptedException e) {
-			// throw new RuntimeException(e);
-		}
-
-		return this.i * 10;
-	}
-
-
-	@Override
-	public int hashCode() {
-
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (this.i == null ? 0 : this.i.hashCode());
-
-		return result;
-	}
-
-
-	@Override
-	public boolean equals(final Object obj) {
-
-		if (this == obj) {
-			return true;
-		}
-
-		if (obj == null) {
-			return false;
-		}
-
-		if (this.getClass() != obj.getClass()) {
-			return false;
-		}
-
-		final TestJob other = (TestJob) obj;
-		if (this.i == null) {
-			if (other.i != null) {
-				return false;
-			}
-		} else if (!this.i.equals(other.i)) {
-			return false;
-		}
-
-		return true;
+		throw new Exception("Fail");
 	}
 
 

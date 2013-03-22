@@ -42,7 +42,7 @@ public class JobManagerTest {
 				public void run() {
 
 					final Integer jobInteger = (int) (Math.random() * 10);
-					AbstractJob<Integer> testJob = new TestJob(jobInteger);
+					AbstractJob<Integer> testJob = new SleepingJob(jobInteger);
 					Integer result = null;
 					int lastPosition = Integer.MAX_VALUE;
 
@@ -105,9 +105,9 @@ public class JobManagerTest {
 
 			try {
 				for (int i = 0; i < 3; i++) {
-					jobIds[i] = jobManager.claimInterest(new TestJob(i), 1000L).getId();
+					jobIds[i] = jobManager.claimInterest(new SleepingJob(i), 1000L).getId();
 				}
-				jobIds[0] = jobManager.claimInterest(new TestJob(0), 1000L).getId();
+				jobIds[0] = jobManager.claimInterest(new SleepingJob(0), 1000L).getId();
 			} catch (OvercapacityException e) {
 				throw e;
 			}
@@ -133,7 +133,7 @@ public class JobManagerTest {
 	public void testException() throws OvercapacityException {
 
 		final JobManager jobManager = new JobManager(1);
-		AbstractJob<Void> job = new TestExceptionJob();
+		AbstractJob<Void> job = new ExceptionJob();
 		Job<Void> jobResult = jobManager.claimInterest(job, 1000L);
 		while (!jobResult.isFinished()) {
 			try {
@@ -156,15 +156,15 @@ public class JobManagerTest {
 		jobManager.setMaxQueueLength(10);
 
 		try {
-			jobManager.claimInterest(new TestJob(0), 1000L, 1);
+			jobManager.claimInterest(new SleepingJob(0), 1000L, 1);
 		} catch (OvercapacityException e) {
 			throw e;
 		}
 
 		try {
-			jobManager.claimInterest(new TestJob(1), 1000L, 1);
-			jobManager.claimInterest(new TestJob(2), 1000L, 1);
-			jobManager.claimInterest(new TestJob(3), 1000L, 0);
+			jobManager.claimInterest(new SleepingJob(1), 1000L, 1);
+			jobManager.claimInterest(new SleepingJob(2), 1000L, 1);
+			jobManager.claimInterest(new SleepingJob(3), 1000L, 0);
 			Assert.fail("Exception expected");
 		} catch (OvercapacityException e) {
 			/* Expected */
@@ -181,15 +181,15 @@ public class JobManagerTest {
 		jobManager.setMaxQueueLength(1);
 
 		try {
-			jobManager.claimInterest(new TestJob(0), 1000L);
+			jobManager.claimInterest(new SleepingJob(0), 1000L);
 		} catch (OvercapacityException e) {
 			throw e;
 		}
 
 		try {
-			jobManager.claimInterest(new TestJob(1), 1000L);
-			jobManager.claimInterest(new TestJob(2), 1000L);
-			jobManager.claimInterest(new TestJob(3), 1000L);
+			jobManager.claimInterest(new SleepingJob(1), 1000L);
+			jobManager.claimInterest(new SleepingJob(2), 1000L);
+			jobManager.claimInterest(new SleepingJob(3), 1000L);
 			Assert.fail("Exception expected");
 		} catch (OvercapacityException e) {
 			/* Expected */
