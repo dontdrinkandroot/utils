@@ -1,6 +1,9 @@
 package net.dontdrinkandroot.utils.pagination;
 
-public class Pagination {
+import java.io.Serializable;
+
+
+public class Pagination implements Serializable {
 
 	private final int perPage;
 

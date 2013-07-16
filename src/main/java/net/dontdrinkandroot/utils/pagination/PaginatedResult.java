@@ -1,9 +1,10 @@
 package net.dontdrinkandroot.utils.pagination;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class PaginatedResult<T> {
+public class PaginatedResult<T> implements Serializable {
 
 	private final Pagination pagination;
 
