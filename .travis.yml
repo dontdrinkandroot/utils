@@ -1,14 +1,12 @@
 language: java
 
 jdk:
-  - oraclejdk7
-  - openjdk7
+- openjdk7
 
 env:
   global:
-    - NEXUS_USERNAME=travis
-    - secure: "GpL22H41amAWOlJSGioeENRoMzULHn6j8ahCDOVH11BjBWxpuuslWU7LzYPOWw4xm5tX7FbjqkKk8YuOAS6/MY6798lX+k98amY2S+fQ9uJl/n/RlYjMwTHg8kWwd7+CNRQCZdBR0dQKXn4XW3K2zzzko8RqqlYbELaDuTqy7ZQ="
-    
+  - NEXUS_USERNAME=travis
+  - secure: UudpnbkMCuO2JwLI9cJOgW9E8VjdAhaZLQ9yDw5RUVuhidpH1w+CU08z+YwLjiuOrLrswV2TyednV+4vDW0k0s8BxJzxzHuChaICw7aQ0eHXlmdpe8MDHaYFCzRyNyvxYUeEiKTKhV8wFFaJfRrIYIO6HAVSPRdsak0Is0cjdNY=
+  
 after_success:
-  - "[ $TRAVIS_JDK_VERSION == \"openjdk7\" ] && { python src/test/resources/write-travis-maven-settings.py; mvn -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true clean deploy --settings ~/.m2/travis-settings.xml; };"
-
+  - "[ $TRAVIS_JDK_VERSION == \"openjdk7\" ] && { mvn clean deploy --settings travis-maven-settings.xml; };"
