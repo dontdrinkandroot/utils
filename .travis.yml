@@ -1,7 +1,11 @@
 language: java
 
 jdk:
-- oraclejdk8
+  - oraclejdk8
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
 
 env:
   global:
@@ -9,4 +13,4 @@ env:
   - secure: UudpnbkMCuO2JwLI9cJOgW9E8VjdAhaZLQ9yDw5RUVuhidpH1w+CU08z+YwLjiuOrLrswV2TyednV+4vDW0k0s8BxJzxzHuChaICw7aQ0eHXlmdpe8MDHaYFCzRyNyvxYUeEiKTKhV8wFFaJfRrIYIO6HAVSPRdsak0Is0cjdNY=
   
 after_success:
-  - "[ $TRAVIS_JDK_VERSION == \"oraclejdk8\" ] && { mvn clean deploy --settings travis-maven-settings.xml; };"
+  - mvn clean deploy cobertura:cobertura coveralls:report --settings travis-maven-settings.xml
