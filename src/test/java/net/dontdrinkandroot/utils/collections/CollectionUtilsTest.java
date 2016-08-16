@@ -18,21 +18,53 @@
 package net.dontdrinkandroot.utils.collections;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 
-public class CollectionUtilsTest {
+public class CollectionUtilsTest
+{
 
 	@Test
-	public void testGetRandom() {
-
+	public void testGetRandom()
+	{
 		Collection<Integer> coll = new ArrayList<Integer>();
 		Assert.assertNull(CollectionUtils.getRandom(coll));
 
 		coll.add(1);
 		Assert.assertEquals(Integer.valueOf(1), CollectionUtils.getRandom(coll));
+	}
+
+	@Test
+	public void meanTest()
+	{
+		List<Integer> numbers = Arrays.asList(new Integer[] { 1, 8, 5, 7, 3 });
+		Assert.assertEquals(5d, CollectionUtils.getMean(numbers), 0.0d);
+
+		numbers = Arrays.asList(new Integer[] { 1, 8, 2, 5, 7, 3 });
+		Assert.assertEquals(4d, CollectionUtils.getMean(numbers), 0.0d);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void meanTestWithNull()
+	{
+		CollectionUtils.getMean(Arrays.asList(new Integer[] { 1, 8, 2, null, 7, 3 }));
+	}
+
+	@Test
+	public void testIsEmpty()
+	{
+		Assert.assertTrue(CollectionUtils.isEmpty(null));
+		Assert.assertTrue(CollectionUtils.isEmpty(new ArrayList<Integer>()));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testIsEmptyNonCollection()
+	{
+		CollectionUtils.isEmpty("NotACollection");
 	}
 }
