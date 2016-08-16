@@ -12,5 +12,5 @@ env:
   - NEXUS_USERNAME=travis
   - secure: UudpnbkMCuO2JwLI9cJOgW9E8VjdAhaZLQ9yDw5RUVuhidpH1w+CU08z+YwLjiuOrLrswV2TyednV+4vDW0k0s8BxJzxzHuChaICw7aQ0eHXlmdpe8MDHaYFCzRyNyvxYUeEiKTKhV8wFFaJfRrIYIO6HAVSPRdsak0Is0cjdNY=
   
-after_success:
-  - mvn clean deploy cobertura:cobertura coveralls:report --settings travis-maven-settings.xml
+script:
+  - mvn -DfailOnServiceError=false clean deploy cobertura:cobertura coveralls:report --settings travis-maven-settings.xml
