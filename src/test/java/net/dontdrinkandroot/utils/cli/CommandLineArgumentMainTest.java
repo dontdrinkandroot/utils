@@ -23,11 +23,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class TestCommandLineArgumentMain {
+public class CommandLineArgumentMainTest
+{
 
 	@Test
-	public void testRequiredFieldsMissing() {
-
+	public void testRequiredFieldsMissing()
+	{
 		String[] args = new String[0];
 
 		ExampleCommandLineArgumentMain main = new ExampleCommandLineArgumentMain();
@@ -35,25 +36,23 @@ public class TestCommandLineArgumentMain {
 		Assert.assertFalse(main.isRan());
 	}
 
-
 	@Test
-	public void testPassingRun() {
-
-		String[] args =
-				new String[] {
-						"-file",
-						"/tmp/test",
-						"-booleanProperty",
-						"-doubleProperty",
-						"6.66",
-						"-floatProperty",
-						"3.33",
-						"-integerProperty",
-						"2",
-						"-longProperty",
-						"4",
-						"-stringProperty",
-						"test" };
+	public void testPassingRun()
+	{
+		String[] args = new String[] {
+				"-file",
+				"/tmp/test",
+				"-booleanProperty",
+				"-doubleProperty",
+				"6.66",
+				"-floatProperty",
+				"3.33",
+				"-integerProperty",
+				"2",
+				"-longProperty",
+				"4",
+				"-stringProperty",
+				"test" };
 
 		ExampleCommandLineArgumentMain main = new ExampleCommandLineArgumentMain();
 		main.setupAndRun(args);
@@ -68,10 +67,9 @@ public class TestCommandLineArgumentMain {
 		Assert.assertEquals("test", main.getStringProperty());
 	}
 
-
 	@Test
-	public void getSetOnlyRequired() {
-
+	public void getSetOnlyRequired()
+	{
 		String[] args = new String[] { "-file", "/tmp/test", };
 
 		ExampleCommandLineArgumentMain main = new ExampleCommandLineArgumentMain();

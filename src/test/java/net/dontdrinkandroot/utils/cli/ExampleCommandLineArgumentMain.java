@@ -20,7 +20,8 @@ package net.dontdrinkandroot.utils.cli;
 import java.io.File;
 
 
-public class ExampleCommandLineArgumentMain extends CommandLineArgumentMain {
+public class ExampleCommandLineArgumentMain extends CommandLineArgumentMain
+{
 
 	@CommandLineArgument(description = "String Property")
 	private String stringProperty;
@@ -47,115 +48,97 @@ public class ExampleCommandLineArgumentMain extends CommandLineArgumentMain {
 
 
 	@Override
-	public void run() {
-
+	public void run()
+	{
 		this.ran = true;
 	}
 
-
 	@Override
-	protected boolean handleFailure(CommandLineArgumentParser parser) {
-
+	protected boolean handleFailure(CommandLineArgumentParser parser)
+	{
 		parser.printErrors();
 		parser.printUsage();
 
 		return true;
 	}
 
-
-	public String getStringProperty() {
-
+	public String getStringProperty()
+	{
 		return this.stringProperty;
 	}
 
-
-	public void setStringProperty(String stringProperty) {
-
+	public void setStringProperty(String stringProperty)
+	{
 		this.stringProperty = stringProperty;
 	}
 
-
-	public Boolean getBooleanProperty() {
-
+	public Boolean getBooleanProperty()
+	{
 		return this.booleanProperty;
 	}
 
-
-	public void setBooleanProperty(Boolean booleanProperty) {
-
+	public void setBooleanProperty(Boolean booleanProperty)
+	{
 		this.booleanProperty = booleanProperty;
 	}
 
-
-	public Integer getIntegerProperty() {
-
+	public Integer getIntegerProperty()
+	{
 		return this.integerProperty;
 	}
 
-
-	public void setIntegerProperty(Integer integerProperty) {
-
+	public void setIntegerProperty(Integer integerProperty)
+	{
 		this.integerProperty = integerProperty;
 	}
 
-
-	public Long getLongProperty() {
-
+	public Long getLongProperty()
+	{
 		return this.longProperty;
 	}
 
-
-	public void setLongProperty(Long longProperty) {
-
+	public void setLongProperty(Long longProperty)
+	{
 		this.longProperty = longProperty;
 	}
 
-
-	public Double getDoubleProperty() {
-
+	public Double getDoubleProperty()
+	{
 		return this.doubleProperty;
 	}
 
-
-	public void setDoubleProperty(Double doubleProperty) {
-
+	public void setDoubleProperty(Double doubleProperty)
+	{
 		this.doubleProperty = doubleProperty;
 	}
 
-
-	public Float getFloatProperty() {
-
+	public Float getFloatProperty()
+	{
 		return this.floatProperty;
 	}
 
-
-	public void setFloatProperty(Float floatProperty) {
-
+	public void setFloatProperty(Float floatProperty)
+	{
 		this.floatProperty = floatProperty;
 	}
 
-
-	public File getFileProperty() {
-
+	public File getFileProperty()
+	{
 		return this.fileProperty;
 	}
 
-
-	public void setFileProperty(File fileProperty) {
-
+	public void setFileProperty(File fileProperty)
+	{
 		this.fileProperty = fileProperty;
 	}
 
-
-	public boolean isRan() {
-
+	public boolean isRan()
+	{
 		return this.ran;
 	}
 
-
-	public void setRan(boolean ran) {
-
+	public void setRan(boolean ran)
+	{
 		this.ran = ran;
 	}
-
 }

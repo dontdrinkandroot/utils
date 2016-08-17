@@ -21,9 +21,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import java.util.SortedSet;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -40,6 +43,18 @@ public class CollectionUtilsTest
 
 		coll.add(1);
 		Assert.assertEquals(Integer.valueOf(1), CollectionUtils.getRandom(coll));
+
+		coll.add(2);
+		Assert.assertTrue(coll.contains(CollectionUtils.getRandom(coll)));
+
+		coll.add(3);
+		Assert.assertTrue(coll.contains(CollectionUtils.getRandom(coll)));
+
+		coll.add(4);
+		Assert.assertTrue(coll.contains(CollectionUtils.getRandom(coll)));
+
+		coll.add(5);
+		Assert.assertTrue(coll.contains(CollectionUtils.getRandom(coll)));
 	}
 
 	@Test
@@ -69,6 +84,14 @@ public class CollectionUtilsTest
 	public void testIsEmptyNonCollection()
 	{
 		CollectionUtils.isEmpty("NotACollection");
+	}
+
+	@Test
+	public void testFirst()
+	{
+		Assert.assertNull(CollectionUtils.first(new ArrayList<String>()));
+		Assert.assertEquals("one", CollectionUtils.first(Arrays.asList(new String[] { "one" })));
+		Assert.assertEquals("one", CollectionUtils.first(Arrays.asList(new String[] { "one", "two" })));
 	}
 
 	@Test
@@ -103,5 +126,41 @@ public class CollectionUtilsTest
 		Assert.assertTrue(map.get("one").contains("one"));
 		Assert.assertTrue(map.get("one").contains("two"));
 		Assert.assertTrue(map.get("two").contains("one"));
+	}
+
+	@Test
+	public void testEntriesSortedByValues()
+	{
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("one", 2);
+		map.put("two", 1);
+		map.put("three", 3);
+		SortedSet<Entry<String, Integer>> entriesSortedByValues = CollectionUtils.entriesSortedByValues(map);
+		Iterator<Entry<String, Integer>> iterator = entriesSortedByValues.iterator();
+		Entry<String, Integer> entry;
+		entry = iterator.next();
+		Assert.assertEquals("two", entry.getKey());
+		entry = iterator.next();
+		Assert.assertEquals("one", entry.getKey());
+		entry = iterator.next();
+		Assert.assertEquals("three", entry.getKey());
+	}
+
+	@Test
+	public void testEntriesSortedByValuesInverse()
+	{
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("one", 2);
+		map.put("two", 1);
+		map.put("three", 3);
+		SortedSet<Entry<String, Integer>> entriesSortedByValues = CollectionUtils.entriesSortedByValuesInverse(map);
+		Iterator<Entry<String, Integer>> iterator = entriesSortedByValues.iterator();
+		Entry<String, Integer> entry;
+		entry = iterator.next();
+		Assert.assertEquals("three", entry.getKey());
+		entry = iterator.next();
+		Assert.assertEquals("one", entry.getKey());
+		entry = iterator.next();
+		Assert.assertEquals("two", entry.getKey());
 	}
 }

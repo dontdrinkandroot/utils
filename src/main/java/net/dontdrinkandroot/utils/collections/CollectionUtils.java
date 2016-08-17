@@ -59,7 +59,12 @@ public class CollectionUtils extends org.apache.commons.collections15.Collection
 
 	public static <T> T first(Iterable<T> iterable)
 	{
-		return iterable.iterator().next();
+		Iterator<T> iterator = iterable.iterator();
+		if (!iterator.hasNext()) {
+			return null;
+		}
+
+		return iterator.next();
 	}
 
 	/**
