@@ -25,7 +25,7 @@ public class CachedFileResourceTest
 		Assert.assertNull(fileResource.getErrorMessage());
 		Assert.assertEquals("application/xml", fileResource.getContentType());
 		Assert.assertEquals(new Long(1839), fileResource.getContentLength());
-		Assert.assertEquals(new Long(1471438229000L), fileResource.getLastModified());
+		Assert.assertNotNull(fileResource.getLastModified());
 		Assert.assertEquals(new Long(3600000), fileResource.getExpiry());
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		fileResource.write(bos);
