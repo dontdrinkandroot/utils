@@ -20,7 +20,10 @@ package net.dontdrinkandroot.utils.collections;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -66,5 +69,39 @@ public class CollectionUtilsTest
 	public void testIsEmptyNonCollection()
 	{
 		CollectionUtils.isEmpty("NotACollection");
+	}
+
+	@Test
+	public void testAddToMapList()
+	{
+		Map<String, List<String>> map = new HashMap<String, List<String>>();
+		CollectionUtils.addToMapList("one", "one", map);
+		CollectionUtils.addToMapList("one", "two", map);
+		CollectionUtils.addToMapList("two", "one", map);
+		Assert.assertEquals(2, map.keySet().size());
+		Assert.assertNotNull(map.get("one"));
+		Assert.assertNotNull(map.get("two"));
+		Assert.assertEquals(2, map.get("one").size());
+		Assert.assertEquals(1, map.get("two").size());
+		Assert.assertEquals("one", map.get("one").get(0));
+		Assert.assertEquals("two", map.get("one").get(1));
+		Assert.assertEquals("one", map.get("two").get(0));
+	}
+
+	@Test
+	public void testAddToMapSet()
+	{
+		Map<String, Set<String>> map = new HashMap<String, Set<String>>();
+		CollectionUtils.addToMapSet("one", "one", map);
+		CollectionUtils.addToMapSet("one", "two", map);
+		CollectionUtils.addToMapSet("two", "one", map);
+		Assert.assertEquals(2, map.keySet().size());
+		Assert.assertNotNull(map.get("one"));
+		Assert.assertNotNull(map.get("two"));
+		Assert.assertEquals(2, map.get("one").size());
+		Assert.assertEquals(1, map.get("two").size());
+		Assert.assertTrue(map.get("one").contains("one"));
+		Assert.assertTrue(map.get("one").contains("two"));
+		Assert.assertTrue(map.get("two").contains("one"));
 	}
 }
