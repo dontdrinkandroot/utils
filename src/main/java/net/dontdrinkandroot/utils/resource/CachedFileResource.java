@@ -21,14 +21,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
 
-import net.dontdrinkandroot.utils.resource.StreamableWebResource;
-
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 
 
-public class CachedFileResource extends StreamableWebResource {
+public class CachedFileResource extends StreamableWebResource
+{
 
 	private final File file;
 
@@ -37,24 +36,22 @@ public class CachedFileResource extends StreamableWebResource {
 	private String fileName;
 
 
-	public CachedFileResource(final File file) {
-
+	public CachedFileResource(final File file)
+	{
 		this.file = file;
 	}
 
-
 	@Override
-	public void write(final OutputStream os) throws IOException {
-
+	public void write(final OutputStream os) throws IOException
+	{
 		final FileInputStream fis = new FileInputStream(this.file);
 		IOUtils.copy(fis, os);
 		IOUtils.closeQuietly(fis);
 	}
 
-
 	@Override
-	public Integer getErrorCode() {
-
+	public Integer getErrorCode()
+	{
 		if (!this.file.exists()) {
 			return 404;
 		}
@@ -62,10 +59,9 @@ public class CachedFileResource extends StreamableWebResource {
 		return null;
 	}
 
-
 	@Override
-	public String getErrorMessage() {
-
+	public String getErrorMessage()
+	{
 		if (!this.file.exists()) {
 			return "Not found";
 		}
@@ -73,65 +69,55 @@ public class CachedFileResource extends StreamableWebResource {
 		return null;
 	}
 
-
 	@Override
-	public String getFileName() {
-
+	public String getFileName()
+	{
 		return this.fileName;
 	}
 
-
 	@Override
-	public String getContentType() {
-
-		final String extension = FilenameUtils.getExtension(this.file.getName());
-
-		if ("png".equals(extension)) {
-			return "image/png";
+	public String getContentType()
+	{
+		try {
+			return Files.probeContentType(this.file.toPath());
+		} catch (IOException e) {
+			return null;
 		}
+	}
 
+	@Override
+	public String getTextEncoding()
+	{
 		return null;
 	}
 
-
 	@Override
-	public String getTextEncoding() {
-
-		return null;
-	}
-
-
-	@Override
-	public Long getContentLength() {
-
+	public Long getContentLength()
+	{
 		return this.file.length();
 	}
 
-
 	@Override
-	public Long getLastModified() {
-
+	public Long getLastModified()
+	{
 		return this.file.lastModified();
 	}
 
-
 	@Override
-	public Long getExpiry() {
-
+	public Long getExpiry()
+	{
 		return this.expiry;
 	}
 
-
-	public StreamableWebResource setExpiry(final Long expiry) {
-
+	public StreamableWebResource setExpiry(final Long expiry)
+	{
 		this.expiry = expiry;
 
 		return this;
 	}
 
-
-	public void setFileName(final String fileName) {
-
+	public void setFileName(final String fileName)
+	{
 		this.fileName = fileName;
 	}
 }

@@ -24,7 +24,8 @@ import java.io.InputStream;
  * ByteArrayInputStream implementation that does not synchronize methods. Source:
  * http://javatechniques.com/blog/faster-deep-copies-of-java-objects/
  */
-public class FastByteArrayInputStream extends InputStream {
+public class FastByteArrayInputStream extends InputStream
+{
 
 	/**
 	 * Our byte buffer
@@ -42,47 +43,50 @@ public class FastByteArrayInputStream extends InputStream {
 	protected int pos = 0;
 
 
-	public FastByteArrayInputStream(byte[] buf, int count) {
-
+	public FastByteArrayInputStream(byte[] buf, int count)
+	{
 		this.buf = buf;
 		this.count = count;
 	}
 
-
-	public final int available() {
-
-		return count - pos;
+	@Override
+	public final int available()
+	{
+		return this.count - this.pos;
 	}
 
-
-	public final int read() {
-
-		return (pos < count) ? (buf[pos++] & 0xff) : -1;
+	@Override
+	public final int read()
+	{
+		return this.pos < this.count ? this.buf[this.pos++] & 0xff : -1;
 	}
 
-
-	public final int read(byte[] b, int off, int len) {
-
-		if (pos >= count)
+	@Override
+	public final int read(byte[] b, int off, int len)
+	{
+		if (this.pos >= this.count) {
 			return -1;
+		}
 
-		if ((pos + len) > count)
-			len = (count - pos);
+		if (this.pos + len > this.count) {
+			len = this.count - this.pos;
+		}
 
-		System.arraycopy(buf, pos, b, off, len);
-		pos += len;
+		System.arraycopy(this.buf, this.pos, b, off, len);
+		this.pos += len;
 		return len;
 	}
 
-
-	public final long skip(long n) {
-
-		if ((pos + n) > count)
-			n = count - pos;
-		if (n < 0)
+	@Override
+	public final long skip(long n)
+	{
+		if (this.pos + n > this.count) {
+			n = this.count - this.pos;
+		}
+		if (n < 0) {
 			return 0;
-		pos += n;
+		}
+		this.pos += n;
 		return n;
 	}
-
 }

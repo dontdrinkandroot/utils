@@ -26,19 +26,19 @@ import org.junit.Assume;
 import org.junit.Test;
 
 
-public class SerializationUtilsTest {
+public class SerializationUtilsTest
+{
 
 	@Test
-	public void clonePerformanceTest() {
-
+	public void clonePerformanceTest()
+	{
 		Assume.assumeTrue(false);
 
 		/*
-		 * Make a reasonable large test object. Note that this doesn't do anything useful -- it is
-		 * simply intended to be large, have several levels of references, and be somewhat random.
-		 * We start with a hashtable and add vectors to it, where each element in the vector is a
-		 * Date object (initialized to the current time), a semi-random string, and a (circular)
-		 * reference back to the object itself. In this case the resulting object produces a
+		 * Make a reasonable large test object. Note that this doesn't do anything useful -- it is simply intended to be
+		 * large, have several levels of references, and be somewhat random. We start with a hashtable and add vectors
+		 * to it, where each element in the vector is a Date object (initialized to the current time), a semi-random
+		 * string, and a (circular) reference back to the object itself. In this case the resulting object produces a
 		 * serialized representation that is approximate 700K.
 		 */
 		Hashtable<Integer, Vector<Object[]>> obj = new Hashtable<Integer, Vector<Object[]>>();
@@ -50,14 +50,14 @@ public class SerializationUtilsTest {
 			obj.put(new Integer(i), v);
 		}
 
-		int iterations = 100;
+		int iterations = 1000;
 
 		/* Make copies of the object using the unoptimized version of the deep copy utility. */
 		long unoptimizedTime = 0L;
 		for (int i = 0; i < iterations; i++) {
 			long start = System.currentTimeMillis();
 			Object copy = SerializationUtils.clone(obj);
-			unoptimizedTime += (System.currentTimeMillis() - start);
+			unoptimizedTime += System.currentTimeMillis() - start;
 
 			/* Avoid having GC run while we are timing... */
 			copy = null;
@@ -69,7 +69,7 @@ public class SerializationUtilsTest {
 		for (int i = 0; i < iterations; i++) {
 			long start = System.currentTimeMillis();
 			Object copy = SerializationUtils.fastClone(obj);
-			optimizedTime += (System.currentTimeMillis() - start);
+			optimizedTime += System.currentTimeMillis() - start;
 
 			/* Avoid having GC run while we are timing... */
 			copy = null;
@@ -80,10 +80,9 @@ public class SerializationUtilsTest {
 		System.out.println("  Optimized time: " + optimizedTime);
 	}
 
-
 	@Test
-	public void testFastClone() {
-
+	public void testFastClone()
+	{
 		Assert.assertEquals("Test", SerializationUtils.fastClone("Test"));
 	}
 
