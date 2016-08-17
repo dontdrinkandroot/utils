@@ -24,11 +24,13 @@
 		<elementfour>vier</elementfour>
 		<elementfive>fuenf</elementfive>
 	</elementthree>
+	<elementsix></elementsix>
 	<toNonEmptyString>
 		<empty text="   ">  </empty>
 		<nonEmpty text="nonEmpty">nonEmpty</nonEmpty>
 	</toNonEmptyString>
 	<toUrl>
+		<inValid>:test:</inValid>
 		<valid>http://example.com</valid>
 		<noProtocol>example.com</noProtocol>
 	</toUrl>

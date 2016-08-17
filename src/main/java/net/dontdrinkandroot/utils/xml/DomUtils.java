@@ -25,19 +25,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import net.dontdrinkandroot.utils.ISO_3166_1_alpha2;
-import net.dontdrinkandroot.utils.lang.StringUtils;
-import net.dontdrinkandroot.utils.lang.time.DateUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.DOMException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import net.dontdrinkandroot.utils.ISO_3166_1_alpha2;
+import net.dontdrinkandroot.utils.lang.StringUtils;
+import net.dontdrinkandroot.utils.lang.time.DateUtils;
 
-public class DomUtils {
+
+public class DomUtils
+{
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(DomUtils.class);
 
@@ -45,21 +45,20 @@ public class DomUtils {
 	/**
 	 * Disabled constructor, utility class.
 	 */
-	protected DomUtils() {
-
+	protected DomUtils()
+	{
 		/* Noop */
 	}
 
-
 	/**
 	 * Retrieve the element body as a string.
-	 * 
+	 *
 	 * @param element
 	 *            The element to process.
 	 * @return The element body as string or null.
 	 */
-	public static String toNonEmptyString(final Element element) {
-
+	public static String toNonEmptyString(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -67,9 +66,8 @@ public class DomUtils {
 		return element.getTextContent();
 	}
 
-
-	public static String toNonEmptyString(final Element element, final String attributeName) {
-
+	public static String toNonEmptyString(final Element element, final String attributeName)
+	{
 		if (!DomUtils.checkAttributeProconditions(element, attributeName)) {
 			return null;
 		}
@@ -79,9 +77,8 @@ public class DomUtils {
 		return text;
 	}
 
-
-	public static Integer toInteger(final Element element) {
-
+	public static Integer toInteger(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -96,9 +93,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Integer toInteger(final Element element, final String attributeName) {
-
+	public static Integer toInteger(final Element element, final String attributeName)
+	{
 		if (!DomUtils.checkAttributeProconditions(element, attributeName)) {
 			return null;
 		}
@@ -113,9 +109,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Long toLong(final Element element) {
-
+	public static Long toLong(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -130,9 +125,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Long toLong(final Element element, final String attributeName) {
-
+	public static Long toLong(final Element element, final String attributeName)
+	{
 		if (!DomUtils.checkAttributeProconditions(element, attributeName)) {
 			return null;
 		}
@@ -147,9 +141,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Float toFloat(final Element element) {
-
+	public static Float toFloat(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -164,9 +157,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Float toFloat(final Element element, final String attributeName) {
-
+	public static Float toFloat(final Element element, final String attributeName)
+	{
 		if (!DomUtils.checkAttributeProconditions(element, attributeName)) {
 			return null;
 		}
@@ -181,9 +173,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Double toDouble(final Element element) {
-
+	public static Double toDouble(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -198,9 +189,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Double toDouble(final Element element, final String attributeName) {
-
+	public static Double toDouble(final Element element, final String attributeName)
+	{
 		if (!DomUtils.checkAttributeProconditions(element, attributeName)) {
 			return null;
 		}
@@ -215,9 +205,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Boolean toBoolean(final Element element) {
-
+	public static Boolean toBoolean(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -227,9 +216,8 @@ public class DomUtils {
 		return DomUtils.toBoolean(text);
 	}
 
-
-	public static Boolean toBoolean(final Element element, final String attributeName) {
-
+	public static Boolean toBoolean(final Element element, final String attributeName)
+	{
 		if (!DomUtils.checkAttributeProconditions(element, attributeName)) {
 			return null;
 		}
@@ -240,9 +228,8 @@ public class DomUtils {
 
 	}
 
-
-	public static URL toURL(final Element element) {
-
+	public static URL toURL(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -257,9 +244,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static URL toHttpURL(final Element element) {
-
+	public static URL toHttpURL(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -282,9 +268,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static ISO_3166_1_alpha2 toCountry(final Element element) {
-
+	public static ISO_3166_1_alpha2 toCountry(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -299,9 +284,8 @@ public class DomUtils {
 		}
 	}
 
-
-	public static Date toDateFromSecondsTimestamp(final Element element, final String attName) {
-
+	public static Date toDateFromSecondsTimestamp(final Element element, final String attName)
+	{
 		if (!DomUtils.checkAttributeProconditions(element, attName)) {
 			return null;
 		}
@@ -317,9 +301,8 @@ public class DomUtils {
 
 	}
 
-
-	public static URI toURI(final Element element) {
-
+	public static URI toURI(final Element element)
+	{
 		if (!DomUtils.checkPreconditions(element)) {
 			return null;
 		}
@@ -328,8 +311,6 @@ public class DomUtils {
 
 			return new URI(element.getTextContent());
 
-		} catch (final DOMException e) {
-			DomUtils.LOGGER.error("Parsing to URI failed: " + e.getMessage());
 		} catch (final URISyntaxException e) {
 			DomUtils.LOGGER.error("Parsing to URI failed: " + e.getMessage());
 		}
@@ -337,18 +318,17 @@ public class DomUtils {
 		return null;
 	}
 
-
 	/**
 	 * Get a single child of an element by its tag name.
-	 * 
+	 *
 	 * @param element
 	 *            The element to search the child for.
 	 * @param name
 	 *            The tag name of the child to search.
 	 * @return The child if found or null.
 	 */
-	public static Element getChildByTagName(final Element element, final String name) {
-
+	public static Element getChildByTagName(final Element element, final String name)
+	{
 		for (final Element child : DomUtils.getChildrenByTagName(element, name)) {
 			return child;
 		}
@@ -356,18 +336,17 @@ public class DomUtils {
 		return null;
 	}
 
-
 	/**
 	 * Get the element text of a single child of an element by its tag name.
-	 * 
+	 *
 	 * @param element
 	 *            The element to search the child for.
 	 * @param name
 	 *            The tag name of the child to search.
 	 * @return The element text of the child if found or null if not found or the text is empty.
 	 */
-	public static String getElementText(final Element element, final String name) {
-
+	public static String getElementText(final Element element, final String name)
+	{
 		final Element child = DomUtils.getChildByTagName(element, name);
 
 		if (child != null) {
@@ -382,10 +361,9 @@ public class DomUtils {
 		return null;
 	}
 
-
 	/**
 	 * Get the attribute text of a single child of an element by its tag name.
-	 * 
+	 *
 	 * @param element
 	 *            The element to search the child for.
 	 * @param name
@@ -394,8 +372,8 @@ public class DomUtils {
 	 *            The name of the attribute.
 	 * @return The attribute text of the child if found or null.
 	 */
-	public static String getAttributeText(final Element element, final String tagName, final String attrName) {
-
+	public static String getAttributeText(final Element element, final String tagName, final String attrName)
+	{
 		final Element child = DomUtils.getChildByTagName(element, tagName);
 
 		if (child != null) {
@@ -407,18 +385,17 @@ public class DomUtils {
 		return null;
 	}
 
-
 	/**
 	 * Get the children of an element with a specified tag name.
-	 * 
+	 *
 	 * @param element
 	 *            The element to search the children for.
 	 * @param name
 	 *            The tag name of the children to search for.
 	 * @return A List of the matching children (can be empty of no children found).
 	 */
-	public static List<Element> getChildrenByTagName(final Element element, final String name) {
-
+	public static List<Element> getChildrenByTagName(final Element element, final String name)
+	{
 		final NodeList children = element.getChildNodes();
 
 		final ArrayList<Element> filteredChildren = new ArrayList<Element>();
@@ -435,22 +412,20 @@ public class DomUtils {
 		return filteredChildren;
 	}
 
-
 	/**
 	 * Checks if the element is null or does only contain whitespace text.
-	 * 
+	 *
 	 * @param element
 	 *            The element to check.
 	 * @return True if the element can be processed.
 	 */
-	protected static boolean checkPreconditions(final Element element) {
-
+	protected static boolean checkPreconditions(final Element element)
+	{
 		return element != null && !StringUtils.isBlank(element.getTextContent());
 	}
 
-
-	private static Boolean toBoolean(String text) {
-
+	private static Boolean toBoolean(String text)
+	{
 		if ("1".equals(text) || text.equalsIgnoreCase("true") || text.equalsIgnoreCase("yes")) {
 			return true;
 		}
@@ -462,21 +437,19 @@ public class DomUtils {
 		return null;
 	}
 
-
 	/**
 	 * Checks if the element is null or the attribute is not set or contains only whitespace text.
-	 * 
+	 *
 	 * @param element
 	 *            The element to check.
 	 * @param attributeName
 	 *            The name of the attribute to check.
 	 * @return True if the attribute can be processed.
 	 */
-	private static boolean checkAttributeProconditions(final Element element, final String attributeName) {
-
+	private static boolean checkAttributeProconditions(final Element element, final String attributeName)
+	{
 		return element != null
 				&& element.hasAttribute(attributeName)
 				&& !StringUtils.isBlank(element.getAttribute(attributeName));
 	}
-
 }
