@@ -21,10 +21,12 @@ import org.junit.Assert;
 import org.junit.Test;
 
 
-public class NumberUtilsTest {
+public class NumberUtilsTest
+{
 
 	@Test
-	public void testLimit() throws Exception {
+	public void testLimit() throws Exception
+	{
 
 		/* Double */
 		try {
@@ -76,9 +78,9 @@ public class NumberUtilsTest {
 
 	}
 
-
 	@Test
-	public void testNullSafeValue() {
+	public void testNullSafeValue()
+	{
 
 		/* byte */
 		Assert.assertEquals(0, NumberUtils.byteValue(null));
@@ -133,6 +135,14 @@ public class NumberUtilsTest {
 		Assert.assertEquals(Long.MAX_VALUE, NumberUtils.doubleValue(Long.MAX_VALUE), .00001f);
 		Assert.assertEquals(Float.MAX_VALUE, NumberUtils.doubleValue(Float.MAX_VALUE), .00001f);
 		Assert.assertEquals(Double.MAX_VALUE, NumberUtils.doubleValue(Double.MAX_VALUE), .00001f);
+	}
+
+	@Test
+	public void testCompare()
+	{
+		Assert.assertEquals(-1, NumberUtils.compare(1, 2));
+		Assert.assertEquals(0, NumberUtils.compare(2, 2));
+		Assert.assertEquals(1, NumberUtils.compare(3, 2));
 	}
 
 }
