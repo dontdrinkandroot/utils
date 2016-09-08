@@ -19,78 +19,77 @@ package net.dontdrinkandroot.utils.cli;
 
 public abstract class CommandLineArgumentMain {
 
-	protected final void setupAndRun(final String[] args) {
+    protected final void setupAndRun(final String[] args)
+    {
 
-		final CommandLineArgumentParser parser = new CommandLineArgumentParser(this);
+        final CommandLineArgumentParser parser = new CommandLineArgumentParser(this);
 
-		parser.evaluateArguments(args);
+        parser.evaluateArguments(args);
 
-		if (parser.hasErrors()) {
-			if (this.handleFailure(parser)) {
-				return;
-			}
-		}
+        if (parser.hasErrors()) {
+            if (this.handleFailure(parser)) {
+                return;
+            }
+        }
 
-		boolean shallRun = true;
-		try {
-			this.setup();
-		} catch (Exception e) {
-			shallRun = this.setupFailed(e);
-		}
+        boolean shallRun = true;
+        try {
+            this.setup();
+        } catch (Exception e) {
+            shallRun = this.setupFailed(e);
+        }
 
-		if (shallRun) {
-			try {
-				this.run();
-			} catch (Exception e) {
-				this.runFailed(e);
-			}
-		}
-	}
+        if (shallRun) {
+            try {
+                this.run();
+            } catch (Exception e) {
+                this.runFailed(e);
+            }
+        }
+    }
 
+    /**
+     * Handle exceptions thrown during setup.
+     *
+     * @return True if the run method should be executed anyway, false otherwise.
+     */
+    protected boolean setupFailed(Exception e)
+    {
 
-	/**
-	 * Handle exceptions thrown during setup.
-	 * 
-	 * @return True if the run method should be executed anyway, false otherwise.
-	 */
-	protected boolean setupFailed(Exception e) {
+        e.printStackTrace();
+        return false;
+    }
 
-		e.printStackTrace();
-		return false;
-	}
+    /**
+     * Handle exceptions thrown during run.
+     */
+    protected void runFailed(Exception e)
+    {
 
+        e.printStackTrace();
+    }
 
-	/**
-	 * Handle exceptions thrown during run.
-	 */
-	protected void runFailed(Exception e) {
+    /**
+     * @return If the failure has been handled and execution should stop.
+     */
+    protected boolean handleFailure(CommandLineArgumentParser parser)
+    {
 
-		e.printStackTrace();
-	}
+        parser.printErrors();
+        parser.printUsage();
 
+        System.exit(-1);
 
-	/**
-	 * @return If the failure has been handled and execution should stop.
-	 */
-	protected boolean handleFailure(CommandLineArgumentParser parser) {
+        return true;
+    }
 
-		parser.printErrors();
-		parser.printUsage();
+    /**
+     * Hook where initialization can be performed after the arguments have been parsed
+     */
+    protected void setup() throws Exception
+    {
 
-		System.exit(-1);
+    }
 
-		return true;
-	}
-
-
-	/**
-	 * Hook where initialization can be performed after the arguments have been parsed
-	 */
-	protected void setup() throws Exception {
-
-	}
-
-
-	public abstract void run() throws Exception;
-
+    public abstract void run() throws Exception;
 }

@@ -24,25 +24,27 @@ package net.dontdrinkandroot.utils;
  */
 public final class Percent {
 
-	public static final int HUNDRED = 100;
+    public static final int HUNDRED = 100;
 
-	public static final int NINETY = 90;
+    public static final int NINETY = 90;
 
-	public static final int SEVENTYFIVE = 75;
+    public static final int SEVENTYFIVE = 75;
 
-	public static final int FIFTY = 50;
+    public static final int FIFTY = 50;
 
-	public static final int TWENTYFIVE = 25;
+    public static final int TWENTYFIVE = 25;
 
-	public static final int TEN = 10;
+    public static final int TEN = 10;
 
-	public static final int ZERO = 0;
+    public static final int ZERO = 0;
 
+    /**
+     * Constructor disabled, utility class.
+     */
+    private Percent()
+    {
 
-	/** Constructor disabled, utility class. */
-	private Percent() {
-
-		/* Noop */
-	}
+        /* Noop */
+    }
 
 }

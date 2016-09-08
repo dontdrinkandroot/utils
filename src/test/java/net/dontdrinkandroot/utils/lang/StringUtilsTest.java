@@ -17,45 +17,45 @@
  */
 package net.dontdrinkandroot.utils.lang;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import junit.framework.Assert;
-
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.functors.NOPTransformer;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class StringUtilsTest {
 
-	@Test
-	public void testIterableJoin() {
+    @Test
+    public void testIterableJoin()
+    {
 
-		List<String> parts = new ArrayList<String>();
-		parts.add("a");
-		parts.add("bee");
-		parts.add("cee");
+        List<String> parts = new ArrayList<String>();
+        parts.add("a");
+        parts.add("bee");
+        parts.add("cee");
 
-		Transformer<String, String> transformer = NOPTransformer.getInstance();
-		CharSequence result = StringUtils.join(parts, ",", transformer);
+        Transformer<String, String> transformer = NOPTransformer.getInstance();
+        CharSequence result = StringUtils.join(parts, ",", transformer);
 
-		Assert.assertEquals("a,bee,cee", result.toString());
-	}
+        Assert.assertEquals("a,bee,cee", result.toString());
+    }
 
+    @Test
+    public void testArrayJoin()
+    {
 
-	@Test
-	public void testArrayJoin() {
+        String[] parts = new String[3];
+        parts[0] = "a";
+        parts[1] = "bee";
+        parts[2] = "cee";
 
-		String[] parts = new String[3];
-		parts[0] = "a";
-		parts[1] = "bee";
-		parts[2] = "cee";
+        Transformer<String, String> transformer = NOPTransformer.getInstance();
+        CharSequence result = StringUtils.join(parts, ",", transformer);
 
-		Transformer<String, String> transformer = NOPTransformer.getInstance();
-		CharSequence result = StringUtils.join(parts, ",", transformer);
-
-		Assert.assertEquals("a,bee,cee", result.toString());
-	}
+        Assert.assertEquals("a,bee,cee", result.toString());
+    }
 
 }

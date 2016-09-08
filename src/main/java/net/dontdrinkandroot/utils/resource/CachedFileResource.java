@@ -17,107 +17,106 @@
  */
 package net.dontdrinkandroot.utils.resource;
 
+import org.apache.commons.io.IOUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 
-import org.apache.commons.io.IOUtils;
-
 
 public class CachedFileResource extends StreamableWebResource
 {
 
-	private final File file;
+    private final File file;
 
-	private Long expiry;
+    private Long expiry;
 
-	private String fileName;
+    private String fileName;
 
+    public CachedFileResource(final File file)
+    {
+        this.file = file;
+    }
 
-	public CachedFileResource(final File file)
-	{
-		this.file = file;
-	}
+    @Override
+    public void write(final OutputStream os) throws IOException
+    {
+        final FileInputStream fis = new FileInputStream(this.file);
+        IOUtils.copy(fis, os);
+        IOUtils.closeQuietly(fis);
+    }
 
-	@Override
-	public void write(final OutputStream os) throws IOException
-	{
-		final FileInputStream fis = new FileInputStream(this.file);
-		IOUtils.copy(fis, os);
-		IOUtils.closeQuietly(fis);
-	}
+    @Override
+    public Integer getErrorCode()
+    {
+        if (!this.file.exists()) {
+            return 404;
+        }
 
-	@Override
-	public Integer getErrorCode()
-	{
-		if (!this.file.exists()) {
-			return 404;
-		}
+        return null;
+    }
 
-		return null;
-	}
+    @Override
+    public String getErrorMessage()
+    {
+        if (!this.file.exists()) {
+            return "Not found";
+        }
 
-	@Override
-	public String getErrorMessage()
-	{
-		if (!this.file.exists()) {
-			return "Not found";
-		}
+        return null;
+    }
 
-		return null;
-	}
+    @Override
+    public String getFileName()
+    {
+        return this.fileName;
+    }
 
-	@Override
-	public String getFileName()
-	{
-		return this.fileName;
-	}
+    @Override
+    public String getContentType()
+    {
+        try {
+            return Files.probeContentType(this.file.toPath());
+        } catch (IOException e) {
+            return null;
+        }
+    }
 
-	@Override
-	public String getContentType()
-	{
-		try {
-			return Files.probeContentType(this.file.toPath());
-		} catch (IOException e) {
-			return null;
-		}
-	}
+    @Override
+    public String getTextEncoding()
+    {
+        return null;
+    }
 
-	@Override
-	public String getTextEncoding()
-	{
-		return null;
-	}
+    @Override
+    public Long getContentLength()
+    {
+        return this.file.length();
+    }
 
-	@Override
-	public Long getContentLength()
-	{
-		return this.file.length();
-	}
+    @Override
+    public Long getLastModified()
+    {
+        return this.file.lastModified();
+    }
 
-	@Override
-	public Long getLastModified()
-	{
-		return this.file.lastModified();
-	}
+    @Override
+    public Long getExpiry()
+    {
+        return this.expiry;
+    }
 
-	@Override
-	public Long getExpiry()
-	{
-		return this.expiry;
-	}
+    public StreamableWebResource setExpiry(final Long expiry)
+    {
+        this.expiry = expiry;
 
-	public StreamableWebResource setExpiry(final Long expiry)
-	{
-		this.expiry = expiry;
+        return this;
+    }
 
-		return this;
-	}
-
-	public void setFileName(final String fileName)
-	{
-		this.fileName = fileName;
-	}
+    public void setFileName(final String fileName)
+    {
+        this.fileName = fileName;
+    }
 }

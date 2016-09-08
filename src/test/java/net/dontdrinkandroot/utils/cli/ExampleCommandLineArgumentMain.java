@@ -23,122 +23,121 @@ import java.io.File;
 public class ExampleCommandLineArgumentMain extends CommandLineArgumentMain
 {
 
-	@CommandLineArgument(description = "String Property")
-	private String stringProperty;
+    @CommandLineArgument(description = "String Property")
+    private String stringProperty;
 
-	@CommandLineArgument(description = "Boolean Property")
-	private Boolean booleanProperty;
+    @CommandLineArgument(description = "Boolean Property")
+    private Boolean booleanProperty;
 
-	@CommandLineArgument(description = "Integer Property")
-	private Integer integerProperty;
+    @CommandLineArgument(description = "Integer Property")
+    private Integer integerProperty;
 
-	@CommandLineArgument(description = "Long Property")
-	private Long longProperty;
+    @CommandLineArgument(description = "Long Property")
+    private Long longProperty;
 
-	@CommandLineArgument(description = "Double Property")
-	private Double doubleProperty;
+    @CommandLineArgument(description = "Double Property")
+    private Double doubleProperty;
 
-	@CommandLineArgument(description = "Float Property")
-	private Float floatProperty;
+    @CommandLineArgument(description = "Float Property")
+    private Float floatProperty;
 
-	@CommandLineArgument(description = "File Property", name = "file", required = true)
-	private File fileProperty;
+    @CommandLineArgument(description = "File Property", name = "file", required = true)
+    private File fileProperty;
 
-	private boolean ran = false;
+    private boolean ran = false;
 
+    @Override
+    public void run()
+    {
+        this.ran = true;
+    }
 
-	@Override
-	public void run()
-	{
-		this.ran = true;
-	}
+    @Override
+    protected boolean handleFailure(CommandLineArgumentParser parser)
+    {
+        parser.printErrors();
+        parser.printUsage();
 
-	@Override
-	protected boolean handleFailure(CommandLineArgumentParser parser)
-	{
-		parser.printErrors();
-		parser.printUsage();
+        return true;
+    }
 
-		return true;
-	}
+    public String getStringProperty()
+    {
+        return this.stringProperty;
+    }
 
-	public String getStringProperty()
-	{
-		return this.stringProperty;
-	}
+    public void setStringProperty(String stringProperty)
+    {
+        this.stringProperty = stringProperty;
+    }
 
-	public void setStringProperty(String stringProperty)
-	{
-		this.stringProperty = stringProperty;
-	}
+    public Boolean getBooleanProperty()
+    {
+        return this.booleanProperty;
+    }
 
-	public Boolean getBooleanProperty()
-	{
-		return this.booleanProperty;
-	}
+    public void setBooleanProperty(Boolean booleanProperty)
+    {
+        this.booleanProperty = booleanProperty;
+    }
 
-	public void setBooleanProperty(Boolean booleanProperty)
-	{
-		this.booleanProperty = booleanProperty;
-	}
+    public Integer getIntegerProperty()
+    {
+        return this.integerProperty;
+    }
 
-	public Integer getIntegerProperty()
-	{
-		return this.integerProperty;
-	}
+    public void setIntegerProperty(Integer integerProperty)
+    {
+        this.integerProperty = integerProperty;
+    }
 
-	public void setIntegerProperty(Integer integerProperty)
-	{
-		this.integerProperty = integerProperty;
-	}
+    public Long getLongProperty()
+    {
+        return this.longProperty;
+    }
 
-	public Long getLongProperty()
-	{
-		return this.longProperty;
-	}
+    public void setLongProperty(Long longProperty)
+    {
+        this.longProperty = longProperty;
+    }
 
-	public void setLongProperty(Long longProperty)
-	{
-		this.longProperty = longProperty;
-	}
+    public Double getDoubleProperty()
+    {
+        return this.doubleProperty;
+    }
 
-	public Double getDoubleProperty()
-	{
-		return this.doubleProperty;
-	}
+    public void setDoubleProperty(Double doubleProperty)
+    {
+        this.doubleProperty = doubleProperty;
+    }
 
-	public void setDoubleProperty(Double doubleProperty)
-	{
-		this.doubleProperty = doubleProperty;
-	}
+    public Float getFloatProperty()
+    {
+        return this.floatProperty;
+    }
 
-	public Float getFloatProperty()
-	{
-		return this.floatProperty;
-	}
+    public void setFloatProperty(Float floatProperty)
+    {
+        this.floatProperty = floatProperty;
+    }
 
-	public void setFloatProperty(Float floatProperty)
-	{
-		this.floatProperty = floatProperty;
-	}
+    public File getFileProperty()
+    {
+        return this.fileProperty;
+    }
 
-	public File getFileProperty()
-	{
-		return this.fileProperty;
-	}
+    public void setFileProperty(File fileProperty)
+    {
+        this.fileProperty = fileProperty;
+    }
 
-	public void setFileProperty(File fileProperty)
-	{
-		this.fileProperty = fileProperty;
-	}
+    public boolean isRan()
+    {
+        return this.ran;
+    }
 
-	public boolean isRan()
-	{
-		return this.ran;
-	}
-
-	public void setRan(boolean ran)
-	{
-		this.ran = ran;
-	}
+    public void setRan(boolean ran)
+    {
+        this.ran = ran;
+    }
 }

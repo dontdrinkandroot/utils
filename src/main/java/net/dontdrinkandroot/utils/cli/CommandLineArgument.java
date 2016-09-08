@@ -26,12 +26,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface CommandLineArgument {
 
-	boolean required() default false;
+    boolean required() default false;
 
+    String name() default "";
 
-	String name() default "";
-
-
-	String description();
+    String description();
 
 }

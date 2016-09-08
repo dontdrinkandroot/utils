@@ -17,65 +17,60 @@
  */
 package net.dontdrinkandroot.utils.lang;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-
 import org.apache.commons.lang3.SerializationException;
+
+import java.io.*;
 
 
 public class SerializationUtils extends org.apache.commons.lang3.SerializationUtils {
 
-	@SuppressWarnings("unchecked")
-	public static <T extends Serializable> T fastClone(T object) {
+    @SuppressWarnings("unchecked")
+    public static <T extends Serializable> T fastClone(T object)
+    {
 
-		Object obj = null;
-		try {
+        Object obj = null;
+        try {
 
-			/* Write the object out to a byte array */
-			FastByteArrayOutputStream fbos = new FastByteArrayOutputStream();
-			ObjectOutputStream out = new ObjectOutputStream(fbos);
-			out.writeObject(object);
-			out.flush();
-			out.close();
+            /* Write the object out to a byte array */
+            FastByteArrayOutputStream fbos = new FastByteArrayOutputStream();
+            ObjectOutputStream out = new ObjectOutputStream(fbos);
+            out.writeObject(object);
+            out.flush();
+            out.close();
 
-			/* Retrieve an input stream from the byte array and read a copy of the object back in. */
-			ObjectInputStream in = new ObjectInputStream(fbos.getInputStream());
-			obj = in.readObject();
+            /* Retrieve an input stream from the byte array and read a copy of the object back in. */
+            ObjectInputStream in = new ObjectInputStream(fbos.getInputStream());
+            obj = in.readObject();
+        } catch (IOException e) {
+            throw new SerializationException(e);
+        } catch (ClassNotFoundException cnfe) {
+            throw new SerializationException(cnfe);
+        }
 
-		} catch (IOException e) {
-			throw new SerializationException(e);
-		} catch (ClassNotFoundException cnfe) {
-			throw new SerializationException(cnfe);
-		}
+        return (T) obj;
+    }
 
-		return (T) obj;
-	}
+    /**
+     * Convenience method that does not require the input to implement Serializable. Of course it
+     * still needs to be serializable.
+     *
+     * @see SerializationUtils#serialize(Serializable, OutputStream)
+     */
+    public static void serialize(Object obj, OutputStream outputStream)
+    {
 
+        SerializationUtils.serialize((Serializable) obj, outputStream);
+    }
 
-	/**
-	 * Convenience method that does not require the input to implement Serializable. Of course it
-	 * still needs to be serializable.
-	 * 
-	 * @see SerializationUtils#serialize(Serializable, OutputStream)
-	 */
-	public static void serialize(Object obj, OutputStream outputStream) {
+    /**
+     * Convenience method that does not require the input to implement Serializable. Of course it
+     * still needs to be serializable.
+     *
+     * @see SerializationUtils#serialize(Serializable)
+     */
+    public static byte[] serialize(Object obj)
+    {
 
-		SerializationUtils.serialize((Serializable) obj, outputStream);
-	}
-
-
-	/**
-	 * Convenience method that does not require the input to implement Serializable. Of course it
-	 * still needs to be serializable.
-	 * 
-	 * @see SerializationUtils#serialize(Serializable)
-	 */
-	public static byte[] serialize(Object obj) {
-
-		return SerializationUtils.serialize((Serializable) obj);
-	}
-
+        return SerializationUtils.serialize((Serializable) obj);
+    }
 }

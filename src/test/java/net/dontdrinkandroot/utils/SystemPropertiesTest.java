@@ -18,36 +18,36 @@
 package net.dontdrinkandroot.utils;
 
 import junit.framework.Assert;
-
 import org.junit.Test;
 
 
 public class SystemPropertiesTest {
 
-	@Test
-	public void test() {
+    @Test
+    public void test()
+    {
 
-		Assert.assertEquals(System.getProperty("file.encoding"), SystemProperties.getFileEncoding());
-		Assert.assertEquals(System.getProperty("file.encoding.pkg"), SystemProperties.getFileEncodingPkg());
-		Assert.assertEquals(System.getProperty("file.separator"), SystemProperties.getFileSeparator());
-		Assert.assertEquals(System.getProperty("java.class.path"), SystemProperties.getJavaClassPath());
-		Assert.assertEquals(System.getProperty("java.class.version"), SystemProperties.getJavaClassVersion());
-		Assert.assertEquals(System.getProperty("java.compiler"), SystemProperties.getJavaCompiler());
-		Assert.assertEquals(System.getProperty("java.home"), SystemProperties.getJavaHome());
-		Assert.assertEquals(System.getProperty("java.io.tmpdir"), SystemProperties.getJavaIoTmpdir());
-		Assert.assertEquals(System.getProperty("java.version"), SystemProperties.getJavaVersion());
-		Assert.assertEquals(System.getProperty("java.vendor"), SystemProperties.getJavaVendor());
-		Assert.assertEquals(System.getProperty("java.vendor.url"), SystemProperties.getJavaVendorUrl());
-		Assert.assertEquals(System.getProperty("line.separator"), SystemProperties.getLineSeparator());
-		Assert.assertEquals(System.getProperty("os.name"), SystemProperties.getOsName());
-		Assert.assertEquals(System.getProperty("os.arch"), SystemProperties.getOsArch());
-		Assert.assertEquals(System.getProperty("os.version"), SystemProperties.getOsVersion());
-		Assert.assertEquals(System.getProperty("path.separator"), SystemProperties.getPathSeparator());
-		Assert.assertEquals(System.getProperty("user.dir"), SystemProperties.getUserDir());
-		Assert.assertEquals(System.getProperty("user.home"), SystemProperties.getUserHome());
-		Assert.assertEquals(System.getProperty("user.language"), SystemProperties.getUserLanguage());
-		Assert.assertEquals(System.getProperty("user.name"), SystemProperties.getUserName());
-		Assert.assertEquals(System.getProperty("user.region"), SystemProperties.getUserRegion());
-		Assert.assertEquals(System.getProperty("user.timezone"), SystemProperties.getUserTimezone());
-	}
+        Assert.assertEquals(System.getProperty("file.encoding"), SystemProperties.getFileEncoding());
+        Assert.assertEquals(System.getProperty("file.encoding.pkg"), SystemProperties.getFileEncodingPkg());
+        Assert.assertEquals(System.getProperty("file.separator"), SystemProperties.getFileSeparator());
+        Assert.assertEquals(System.getProperty("java.class.path"), SystemProperties.getJavaClassPath());
+        Assert.assertEquals(System.getProperty("java.class.version"), SystemProperties.getJavaClassVersion());
+        Assert.assertEquals(System.getProperty("java.compiler"), SystemProperties.getJavaCompiler());
+        Assert.assertEquals(System.getProperty("java.home"), SystemProperties.getJavaHome());
+        Assert.assertEquals(System.getProperty("java.io.tmpdir"), SystemProperties.getJavaIoTmpdir());
+        Assert.assertEquals(System.getProperty("java.version"), SystemProperties.getJavaVersion());
+        Assert.assertEquals(System.getProperty("java.vendor"), SystemProperties.getJavaVendor());
+        Assert.assertEquals(System.getProperty("java.vendor.url"), SystemProperties.getJavaVendorUrl());
+        Assert.assertEquals(System.getProperty("line.separator"), SystemProperties.getLineSeparator());
+        Assert.assertEquals(System.getProperty("os.name"), SystemProperties.getOsName());
+        Assert.assertEquals(System.getProperty("os.arch"), SystemProperties.getOsArch());
+        Assert.assertEquals(System.getProperty("os.version"), SystemProperties.getOsVersion());
+        Assert.assertEquals(System.getProperty("path.separator"), SystemProperties.getPathSeparator());
+        Assert.assertEquals(System.getProperty("user.dir"), SystemProperties.getUserDir());
+        Assert.assertEquals(System.getProperty("user.home"), SystemProperties.getUserHome());
+        Assert.assertEquals(System.getProperty("user.language"), SystemProperties.getUserLanguage());
+        Assert.assertEquals(System.getProperty("user.name"), SystemProperties.getUserName());
+        Assert.assertEquals(System.getProperty("user.region"), SystemProperties.getUserRegion());
+        Assert.assertEquals(System.getProperty("user.timezone"), SystemProperties.getUserTimezone());
+    }
 }

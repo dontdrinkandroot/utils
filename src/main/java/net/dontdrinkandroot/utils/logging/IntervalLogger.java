@@ -22,28 +22,28 @@ import org.slf4j.Logger;
 
 public class IntervalLogger {
 
-	private final Logger logger;
+    private final Logger logger;
 
-	private final long interval;
+    private final long interval;
 
-	private long lastOutput;
+    private long lastOutput;
 
+    public IntervalLogger(final Logger logger, final long interval)
+    {
 
-	public IntervalLogger(final Logger logger, final long interval) {
+        this.logger = logger;
+        this.interval = interval;
+        this.lastOutput = System.currentTimeMillis();
+    }
 
-		this.logger = logger;
-		this.interval = interval;
-		this.lastOutput = System.currentTimeMillis();
-	}
+    public final void info(final String msg)
+    {
 
-
-	public final void info(final String msg) {
-
-		final long now = System.currentTimeMillis();
-		if (now - this.lastOutput > this.interval) {
-			this.logger.info(msg);
-			this.lastOutput = now;
-		}
-	}
+        final long now = System.currentTimeMillis();
+        if (now - this.lastOutput > this.interval) {
+            this.logger.info(msg);
+            this.lastOutput = now;
+        }
+    }
 
 }

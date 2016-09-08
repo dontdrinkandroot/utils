@@ -19,36 +19,36 @@ package net.dontdrinkandroot.utils.lang.math;
 
 public class RandomUtils {
 
-	public static double PARETO_EIGHTY_PERCENT_UNDER_HUNDRED = .35;
+    public static double PARETO_EIGHTY_PERCENT_UNDER_HUNDRED = .35;
 
-	public static double PARETO_EIGHTY_PERCENT_UNDER_THOUSAND = 0.24;
+    public static double PARETO_EIGHTY_PERCENT_UNDER_THOUSAND = 0.24;
 
-	public static double PARETO_EIGHTY_PERCENT_UNDER_TENTHOUSAND = 0.18;
+    public static double PARETO_EIGHTY_PERCENT_UNDER_TENTHOUSAND = 0.18;
 
-	public static double PARETO_EIGHTY_PERCENT_UNDER_TWENTYTHOUSAND = 0.165;
+    public static double PARETO_EIGHTY_PERCENT_UNDER_TWENTYTHOUSAND = 0.165;
 
-	public static double PARETO_EIGHTY_PERCENT_UNDER_HUNDREDTHOUSAND = 0.14;
+    public static double PARETO_EIGHTY_PERCENT_UNDER_HUNDREDTHOUSAND = 0.14;
 
-	public static double PARETO_EIGHTY_PERCENT_UNDER_TWOHUNDREDTHOUSAND = 0.135;
+    public static double PARETO_EIGHTY_PERCENT_UNDER_TWOHUNDREDTHOUSAND = 0.135;
 
+    /**
+     * Taken from http://introcs.cs.princeton.edu/java/stdlib/.
+     * <p>
+     * <pre>
+     * 80% under 1000: 0.24
+     * 80% under 10000: 0.18
+     * 80% under 20000: 0.165
+     * 80% under 100000: 0.14
+     * 80% under 200000: 0.135
+     * </pre>
+     *
+     * @param alpha
+     * @return
+     */
+    public static double pareto(double alpha)
+    {
 
-	/**
-	 * Taken from http://introcs.cs.princeton.edu/java/stdlib/.
-	 * 
-	 * <pre>
-	 * 80% under 1000: 0.24
-	 * 80% under 10000: 0.18
-	 * 80% under 20000: 0.165
-	 * 80% under 100000: 0.14
-	 * 80% under 200000: 0.135
-	 * </pre>
-	 * 
-	 * @param alpha
-	 * @return
-	 */
-	public static double pareto(double alpha) {
-
-		return Math.pow(1 - Math.random(), -1.0 / alpha) - 1.0;
-	}
+        return Math.pow(1 - Math.random(), -1.0 / alpha) - 1.0;
+    }
 
 }

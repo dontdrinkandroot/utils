@@ -23,30 +23,22 @@ import java.io.OutputStream;
 
 public abstract class StreamableWebResource {
 
-	public abstract void write(OutputStream os) throws IOException;
+    public abstract void write(OutputStream os) throws IOException;
 
+    public abstract Integer getErrorCode();
 
-	public abstract Integer getErrorCode();
+    public abstract String getErrorMessage();
 
+    public abstract String getFileName();
 
-	public abstract String getErrorMessage();
+    public abstract String getContentType();
 
+    public abstract String getTextEncoding();
 
-	public abstract String getFileName();
+    public abstract Long getContentLength();
 
+    public abstract Long getLastModified();
 
-	public abstract String getContentType();
-
-
-	public abstract String getTextEncoding();
-
-
-	public abstract Long getContentLength();
-
-
-	public abstract Long getLastModified();
-
-
-	public abstract Long getExpiry();
+    public abstract Long getExpiry();
 
 }

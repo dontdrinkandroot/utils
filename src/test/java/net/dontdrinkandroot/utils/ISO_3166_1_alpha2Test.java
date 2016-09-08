@@ -17,33 +17,33 @@
  */
 package net.dontdrinkandroot.utils;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-
-import javax.xml.bind.annotation.XmlEnumValue;
-
 import org.junit.Assert;
 import org.junit.Test;
+
+import javax.xml.bind.annotation.XmlEnumValue;
+import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 
 
 public class ISO_3166_1_alpha2Test {
 
-	@Test
-	public void test() {
+    @Test
+    public void test()
+    {
 
-		ISO_3166_1_alpha2.DE.getName();
+        ISO_3166_1_alpha2.DE.getName();
 
-		Field[] fields = ISO_3166_1_alpha2.class.getDeclaredFields();
-		for (Field field : fields) {
-			String name = field.getName();
-			Type type = field.getType();
-			if (type.equals(ISO_3166_1_alpha2.class)) {
-				Assert.assertEquals(2, name.length());
-				XmlEnumValue xmlAnnotation = field.getAnnotation(XmlEnumValue.class);
-				Assert.assertNotNull(xmlAnnotation);
-				Assert.assertEquals(name, xmlAnnotation.value());
-				// TODO: assert get name
-			}
-		}
-	}
+        Field[] fields = ISO_3166_1_alpha2.class.getDeclaredFields();
+        for (Field field : fields) {
+            String name = field.getName();
+            Type type = field.getType();
+            if (type.equals(ISO_3166_1_alpha2.class)) {
+                Assert.assertEquals(2, name.length());
+                XmlEnumValue xmlAnnotation = field.getAnnotation(XmlEnumValue.class);
+                Assert.assertNotNull(xmlAnnotation);
+                Assert.assertEquals(name, xmlAnnotation.value());
+                // TODO: assert get name
+            }
+        }
+    }
 }

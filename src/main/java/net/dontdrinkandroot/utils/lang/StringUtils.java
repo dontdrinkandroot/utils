@@ -17,9 +17,9 @@
  */
 package net.dontdrinkandroot.utils.lang;
 
-import java.util.Iterator;
-
 import org.apache.commons.collections15.Transformer;
+
+import java.util.Iterator;
 
 
 /**
@@ -28,40 +28,43 @@ import org.apache.commons.collections15.Transformer;
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
-	public static <T> CharSequence join(
-			final Iterable<T> objects,
-			final String seperator,
-			final Transformer<T, String> toStringTransformer) {
+    public static <T> CharSequence join(
+            final Iterable<T> objects,
+            final String seperator,
+            final Transformer<T, String> toStringTransformer
+    )
+    {
 
-		final StringBuffer sb = new StringBuffer();
-		final Iterator<T> iterator = objects.iterator();
-		while (iterator.hasNext()) {
-			final T object = iterator.next();
-			sb.append(toStringTransformer.transform(object));
-			if (iterator.hasNext()) {
-				sb.append(seperator);
-			}
-		}
+        final StringBuffer sb = new StringBuffer();
+        final Iterator<T> iterator = objects.iterator();
+        while (iterator.hasNext()) {
+            final T object = iterator.next();
+            sb.append(toStringTransformer.transform(object));
+            if (iterator.hasNext()) {
+                sb.append(seperator);
+            }
+        }
 
-		return sb;
-	}
+        return sb;
+    }
 
+    public static <T> CharSequence join(
+            final T[] objects,
+            final String seperator,
+            final Transformer<T, String> toStringTransformer
+    )
+    {
 
-	public static <T> CharSequence join(
-			final T[] objects,
-			final String seperator,
-			final Transformer<T, String> toStringTransformer) {
+        final StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < objects.length; i++) {
+            final T object = objects[i];
+            sb.append(toStringTransformer.transform(object));
+            if (i < objects.length - 1) {
+                sb.append(seperator);
+            }
+        }
 
-		final StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < objects.length; i++) {
-			final T object = objects[i];
-			sb.append(toStringTransformer.transform(object));
-			if (i < objects.length - 1) {
-				sb.append(seperator);
-			}
-		}
-
-		return sb;
-	}
+        return sb;
+    }
 
 }

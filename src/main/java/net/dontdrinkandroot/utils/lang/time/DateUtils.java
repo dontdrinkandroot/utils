@@ -22,14 +22,14 @@ import java.text.SimpleDateFormat;
 
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
-	public static final int SECONDS_PER_MINUTE = 60;
+    public static final int SECONDS_PER_MINUTE = 60;
 
-	public static final int MINUTES_PER_HOUR = 60;
+    public static final int MINUTES_PER_HOUR = 60;
 
-	public static final int HOURS_PER_DAY = 24;
+    public static final int HOURS_PER_DAY = 24;
 
-	public static final int DAYS_PER_WEEK = 7;
+    public static final int DAYS_PER_WEEK = 7;
 
-	public static SimpleDateFormat RFC3339Format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+    public static SimpleDateFormat RFC3339Format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
 }

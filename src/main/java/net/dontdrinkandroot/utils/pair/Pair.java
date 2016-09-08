@@ -23,125 +23,125 @@ import java.util.Iterator;
 
 public class Pair<T extends Serializable> implements Serializable, Iterable<T> {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private T first;
+    private T first;
 
-	private T second;
+    private T second;
 
+    public Pair()
+    {
 
-	public Pair() {
+    }
 
-	}
+    public Pair(T first, T second)
+    {
 
+        this.first = first;
+        this.second = second;
+    }
 
-	public Pair(T first, T second) {
+    public T getFirst()
+    {
 
-		this.first = first;
-		this.second = second;
-	}
+        return this.first;
+    }
 
+    public void setFirst(T first)
+    {
 
-	public T getFirst() {
+        this.first = first;
+    }
 
-		return this.first;
-	}
+    public T getSecond()
+    {
 
+        return this.second;
+    }
 
-	public void setFirst(T first) {
+    public void setSecond(T second)
+    {
 
-		this.first = first;
-	}
+        this.second = second;
+    }
 
+    @Override
+    public int hashCode()
+    {
 
-	public T getSecond() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((this.first == null) ? 0 : this.first.hashCode());
+        result = prime * result + ((this.second == null) ? 0 : this.second.hashCode());
+        return result;
+    }
 
-		return this.second;
-	}
+    @Override
+    public boolean equals(Object obj)
+    {
 
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Pair<?> other = (Pair<?>) obj;
+        if (this.first == null) {
+            if (other.first != null) {
+                return false;
+            }
+        } else if (!this.first.equals(other.first)) {
+            return false;
+        }
+        if (this.second == null) {
+            if (other.second != null) {
+                return false;
+            }
+        } else if (!this.second.equals(other.second)) {
+            return false;
+        }
+        return true;
+    }
 
-	public void setSecond(T second) {
+    @Override
+    public Iterator<T> iterator()
+    {
 
-		this.second = second;
-	}
+        return new Iterator<T>()
+        {
 
+            private boolean isFirst = true;
 
-	@Override
-	public int hashCode() {
+            @Override
+            public boolean hasNext()
+            {
 
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((this.first == null) ? 0 : this.first.hashCode());
-		result = prime * result + ((this.second == null) ? 0 : this.second.hashCode());
-		return result;
-	}
+                return this.isFirst;
+            }
 
+            @Override
+            public T next()
+            {
 
-	@Override
-	public boolean equals(Object obj) {
+                if (this.isFirst) {
+                    this.isFirst = false;
+                    return Pair.this.first;
+                } else {
+                    return Pair.this.second;
+                }
+            }
 
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (this.getClass() != obj.getClass()) {
-			return false;
-		}
-		Pair<?> other = (Pair<?>) obj;
-		if (this.first == null) {
-			if (other.first != null) {
-				return false;
-			}
-		} else if (!this.first.equals(other.first)) {
-			return false;
-		}
-		if (this.second == null) {
-			if (other.second != null) {
-				return false;
-			}
-		} else if (!this.second.equals(other.second)) {
-			return false;
-		}
-		return true;
-	}
+            @Override
+            public void remove()
+            {
 
-
-	@Override
-	public Iterator<T> iterator() {
-
-		return new Iterator<T>() {
-
-			private boolean isFirst = true;
-
-
-			@Override
-			public boolean hasNext() {
-
-				return this.isFirst;
-			}
-
-
-			@Override
-			public T next() {
-
-				if (this.isFirst) {
-					this.isFirst = false;
-					return Pair.this.first;
-				} else {
-					return Pair.this.second;
-				}
-			}
-
-
-			@Override
-			public void remove() {
-
-				throw new UnsupportedOperationException();
-
-			}
-		};
-	}
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
 
 }

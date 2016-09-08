@@ -27,66 +27,65 @@ import java.io.InputStream;
 public class FastByteArrayInputStream extends InputStream
 {
 
-	/**
-	 * Our byte buffer
-	 */
-	protected byte[] buf = null;
+    /**
+     * Our byte buffer
+     */
+    protected byte[] buf = null;
 
-	/**
-	 * Number of bytes that we can read from the buffer
-	 */
-	protected int count = 0;
+    /**
+     * Number of bytes that we can read from the buffer
+     */
+    protected int count = 0;
 
-	/**
-	 * Number of bytes that have been read from the buffer
-	 */
-	protected int pos = 0;
+    /**
+     * Number of bytes that have been read from the buffer
+     */
+    protected int pos = 0;
 
+    public FastByteArrayInputStream(byte[] buf, int count)
+    {
+        this.buf = buf;
+        this.count = count;
+    }
 
-	public FastByteArrayInputStream(byte[] buf, int count)
-	{
-		this.buf = buf;
-		this.count = count;
-	}
+    @Override
+    public final int available()
+    {
+        return this.count - this.pos;
+    }
 
-	@Override
-	public final int available()
-	{
-		return this.count - this.pos;
-	}
+    @Override
+    public final int read()
+    {
+        return this.pos < this.count ? this.buf[this.pos++] & 0xff : -1;
+    }
 
-	@Override
-	public final int read()
-	{
-		return this.pos < this.count ? this.buf[this.pos++] & 0xff : -1;
-	}
+    @Override
+    public final int read(byte[] b, int off, int len)
+    {
+        if (this.pos >= this.count) {
+            return -1;
+        }
 
-	@Override
-	public final int read(byte[] b, int off, int len)
-	{
-		if (this.pos >= this.count) {
-			return -1;
-		}
+        if (this.pos + len > this.count) {
+            len = this.count - this.pos;
+        }
 
-		if (this.pos + len > this.count) {
-			len = this.count - this.pos;
-		}
+        System.arraycopy(this.buf, this.pos, b, off, len);
+        this.pos += len;
+        return len;
+    }
 
-		System.arraycopy(this.buf, this.pos, b, off, len);
-		this.pos += len;
-		return len;
-	}
-
-	@Override
-	public final long skip(long n)
-	{
-		if (this.pos + n > this.count) {
-			n = this.count - this.pos;
-		}
-		if (n < 0) {
-			return 0;
-		}
-		this.pos += n;
-		return n;
-	}
+    @Override
+    public final long skip(long n)
+    {
+        if (this.pos + n > this.count) {
+            n = this.count - this.pos;
+        }
+        if (n < 0) {
+            return 0;
+        }
+        this.pos += n;
+        return n;
+    }
 }

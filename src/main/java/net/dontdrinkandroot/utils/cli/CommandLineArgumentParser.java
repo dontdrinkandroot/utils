@@ -19,316 +19,297 @@ package net.dontdrinkandroot.utils.cli;
 
 import java.io.File;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 
 
 public class CommandLineArgumentParser {
 
-	private boolean parsed = false;
+    private boolean parsed = false;
 
-	private final Object annotatedObject;
+    private final Object annotatedObject;
 
-	private Map<String, CommandLineArgument> annotatedArguments;
+    private Map<String, CommandLineArgument> annotatedArguments;
 
-	private Map<String, Field> fields;
+    private Map<String, Field> fields;
 
-	private StringBuffer errors;
+    private StringBuffer errors;
 
+    public CommandLineArgumentParser(final Object annotatedObject)
+    {
 
-	public CommandLineArgumentParser(final Object annotatedObject) {
+        this.annotatedObject = annotatedObject;
+    }
 
-		this.annotatedObject = annotatedObject;
-	}
+    public final void evaluateArguments(final String[] args)
+    {
 
+        if (!this.parsed) {
+            this.parse();
+        }
 
-	public final void evaluateArguments(final String[] args) {
+        this.errors = new StringBuffer();
 
-		if (!this.parsed) {
-			this.parse();
-		}
+        final Set<String> requiredNames = this.findRequiredNames();
 
-		this.errors = new StringBuffer();
+        for (int i = 0; i < args.length; i++) {
 
-		final Set<String> requiredNames = this.findRequiredNames();
+            if (!args[i].startsWith("-")) {
 
-		for (int i = 0; i < args.length; i++) {
+                this.errors.append("Unknown argument '" + args[i] + "'\n");
+            } else {
 
-			if (!args[i].startsWith("-")) {
+                final String name = args[i].substring(1, args[i].length());
 
-				this.errors.append("Unknown argument '" + args[i] + "'\n");
+                if (!this.annotatedArguments.containsKey(name)) {
 
-			} else {
+                    this.errors.append("Unknown argument '" + name + "'\n");
+                } else {
 
-				final String name = args[i].substring(1, args[i].length());
+                    final Field field = this.fields.get(name);
+                    field.setAccessible(true);
 
-				if (!this.annotatedArguments.containsKey(name)) {
+                    if (this.isBoolean(field)) {
 
-					this.errors.append("Unknown argument '" + name + "'\n");
+                        this.setBoolean(field);
+                        requiredNames.remove(name);
+                    } else {
 
-				} else {
+                        // TODO: could be out of bounds
+                        final String value = args[i + 1];
+                        if (this.isString(field)) {
 
-					final Field field = this.fields.get(name);
-					field.setAccessible(true);
+                            this.setString(field, value);
+                            requiredNames.remove(name);
+                        } else if (this.isInt(field)) {
 
-					if (this.isBoolean(field)) {
+                            this.setInt(field, value);
+                            requiredNames.remove(name);
+                        } else if (this.isFile(field)) {
 
-						this.setBoolean(field);
-						requiredNames.remove(name);
+                            this.setFile(field, value);
+                            requiredNames.remove(name);
+                        } else if (this.isDouble(field)) {
 
-					} else {
+                            this.setDouble(field, value);
+                            requiredNames.remove(name);
+                        } else if (this.isFloat(field)) {
 
-						// TODO: could be out of bounds
-						final String value = args[i + 1];
-						if (this.isString(field)) {
+                            this.setFloat(field, value);
+                            requiredNames.remove(name);
+                        } else if (this.isLong(field)) {
 
-							this.setString(field, value);
-							requiredNames.remove(name);
+                            this.setLong(field, value);
+                            requiredNames.remove(name);
+                        } else {
 
-						} else if (this.isInt(field)) {
+                            this.errors.append(String.format(
+                                    "Dont' know how to parse %s with value %s for argument '%s'\n",
+                                    field.getType().toString(),
+                                    value,
+                                    name
+                            ));
+                        }
+                        i++;
+                    }
+                }
+            }
+        }
 
-							this.setInt(field, value);
-							requiredNames.remove(name);
+        if (!requiredNames.isEmpty()) {
+            for (final String requiredName : requiredNames) {
+                this.errors.append("Missing required argument '" + requiredName + "'\n");
+            }
+        }
+    }
 
-						} else if (this.isFile(field)) {
+    public final boolean hasErrors()
+    {
 
-							this.setFile(field, value);
-							requiredNames.remove(name);
+        if (this.errors == null) {
+            return false;
+        }
 
-						} else if (this.isDouble(field)) {
+        final String errorString = this.errors.toString();
 
-							this.setDouble(field, value);
-							requiredNames.remove(name);
+        return !errorString.equals("");
+    }
 
-						} else if (this.isFloat(field)) {
+    public final void printErrors()
+    {
 
-							this.setFloat(field, value);
-							requiredNames.remove(name);
+        System.out.println(this.errors);
+    }
 
-						} else if (this.isLong(field)) {
+    public final void printUsage()
+    {
 
-							this.setLong(field, value);
-							requiredNames.remove(name);
+        if (!this.parsed) {
+            this.parse();
+        }
 
-						} else {
+        final List<String> sortedNames = new ArrayList<String>(this.annotatedArguments.keySet());
+        Collections.sort(sortedNames);
+
+        int maxNameLength = 0;
+        int maxTypeLength = 0;
+        for (final Entry<String, Field> entry : this.fields.entrySet()) {
+            final String name = entry.getKey();
+            final Field field = entry.getValue();
+            if (name.length() > maxNameLength) {
+                maxNameLength = name.length();
+            }
+            if (field.getType().getSimpleName().length() > maxTypeLength) {
+                maxTypeLength = field.getType().getSimpleName().length();
+            }
+        }
 
-							this.errors.append(String.format(
-									"Dont' know how to parse %s with value %s for argument '%s'\n",
-									field.getType().toString(),
-									value,
-									name));
+        final StringBuffer usage = new StringBuffer("Usage:\n");
+        for (final String name : sortedNames) {
+            final Field field = this.fields.get(name);
+            final CommandLineArgument annotation = this.annotatedArguments.get(name);
+            usage.append(String.format("-%-" + maxNameLength + "s %-" + (maxTypeLength + 2) + "s : %s", name, "<"
+                    + field.getType().getSimpleName() + ">", annotation.description()));
+            if (annotation.required()) {
+                usage.append(" (required)");
+            }
+            usage.append("\n");
+        }
 
-						}
-						i++;
-					}
-				}
-			}
-		}
+        System.out.println(usage);
+    }
 
-		if (!requiredNames.isEmpty()) {
-			for (final String requiredName : requiredNames) {
-				this.errors.append("Missing required argument '" + requiredName + "'\n");
-			}
-		}
+    private Set<String> findRequiredNames()
+    {
 
-	}
+        final Set<String> requiredNames = new HashSet<String>();
+        for (final Entry<String, CommandLineArgument> entry : this.annotatedArguments.entrySet()) {
+            if (entry.getValue().required()) {
+                requiredNames.add(entry.getKey());
+            }
+        }
 
+        return requiredNames;
+    }
 
-	public final boolean hasErrors() {
+    private boolean isBoolean(final Field field)
+    {
 
-		if (this.errors == null) {
-			return false;
-		}
+        return boolean.class.isAssignableFrom(field.getType()) || Boolean.class.isAssignableFrom(field.getType());
+    }
 
-		final String errorString = this.errors.toString();
+    private boolean isFile(final Field field)
+    {
 
-		return !errorString.equals("");
-	}
+        return File.class.isAssignableFrom(field.getType());
+    }
 
+    private boolean isDouble(final Field field)
+    {
 
-	public final void printErrors() {
+        return double.class.isAssignableFrom(field.getType()) || Double.class.isAssignableFrom(field.getType());
+    }
 
-		System.out.println(this.errors);
-	}
+    private boolean isInt(final Field field)
+    {
 
+        return int.class.isAssignableFrom(field.getType()) || Integer.class.isAssignableFrom(field.getType());
+    }
 
-	public final void printUsage() {
+    private boolean isLong(final Field field)
+    {
 
-		if (!this.parsed) {
-			this.parse();
-		}
+        return long.class.isAssignableFrom(field.getType()) || Long.class.isAssignableFrom(field.getType());
+    }
 
-		final List<String> sortedNames = new ArrayList<String>(this.annotatedArguments.keySet());
-		Collections.sort(sortedNames);
+    private boolean isFloat(final Field field)
+    {
 
-		int maxNameLength = 0;
-		int maxTypeLength = 0;
-		for (final Entry<String, Field> entry : this.fields.entrySet()) {
-			final String name = entry.getKey();
-			final Field field = entry.getValue();
-			if (name.length() > maxNameLength) {
-				maxNameLength = name.length();
-			}
-			if (field.getType().getSimpleName().length() > maxTypeLength) {
-				maxTypeLength = field.getType().getSimpleName().length();
-			}
-		}
+        return float.class.isAssignableFrom(field.getType()) || Float.class.isAssignableFrom(field.getType());
+    }
 
-		final StringBuffer usage = new StringBuffer("Usage:\n");
-		for (final String name : sortedNames) {
-			final Field field = this.fields.get(name);
-			final CommandLineArgument annotation = this.annotatedArguments.get(name);
-			usage.append(String.format("-%-" + maxNameLength + "s %-" + (maxTypeLength + 2) + "s : %s", name, "<"
-					+ field.getType().getSimpleName() + ">", annotation.description()));
-			if (annotation.required()) {
-				usage.append(" (required)");
-			}
-			usage.append("\n");
-		}
+    private boolean isString(final Field field)
+    {
 
-		System.out.println(usage);
+        return String.class.isAssignableFrom(field.getType());
+    }
 
-	}
+    private void parse()
+    {
 
+        this.annotatedArguments = new HashMap<String, CommandLineArgument>();
+        this.fields = new HashMap<String, Field>();
 
-	private Set<String> findRequiredNames() {
+        // TODO check for duplicate name declarations
+        for (final Field field : this.annotatedObject.getClass().getDeclaredFields()) {
+            final CommandLineArgument annotation = field.getAnnotation(CommandLineArgument.class);
+            if (annotation != null) {
+                String name = field.getName();
+                if (annotation.name() != null && !annotation.name().equals("")) {
+                    name = annotation.name();
+                }
+                this.annotatedArguments.put(name, annotation);
+                this.fields.put(name, field);
+            }
+        }
 
-		final Set<String> requiredNames = new HashSet<String>();
-		for (final Entry<String, CommandLineArgument> entry : this.annotatedArguments.entrySet()) {
-			if (entry.getValue().required()) {
-				requiredNames.add(entry.getKey());
-			}
-		}
+        this.parsed = true;
+    }
 
-		return requiredNames;
-	}
+    private void setBoolean(final Field field)
+    {
 
+        this.setField(field, true);
+    }
 
-	private boolean isBoolean(final Field field) {
+    private void setFile(final Field field, final String value)
+    {
 
-		return boolean.class.isAssignableFrom(field.getType()) || Boolean.class.isAssignableFrom(field.getType());
-	}
+        this.setField(field, new File(value));
+    }
 
+    private void setInt(final Field field, final String value)
+    {
 
-	private boolean isFile(final Field field) {
+        this.setField(field, Integer.valueOf(value));
+    }
 
-		return File.class.isAssignableFrom(field.getType());
-	}
+    private void setDouble(final Field field, final String value)
+    {
 
+        this.setField(field, Double.valueOf(value));
+    }
 
-	private boolean isDouble(final Field field) {
+    private void setFloat(final Field field, final String value)
+    {
 
-		return double.class.isAssignableFrom(field.getType()) || Double.class.isAssignableFrom(field.getType());
-	}
+        this.setField(field, Float.valueOf(value));
+    }
 
+    private void setLong(final Field field, final String value)
+    {
 
-	private boolean isInt(final Field field) {
+        this.setField(field, Long.valueOf(value));
+    }
 
-		return int.class.isAssignableFrom(field.getType()) || Integer.class.isAssignableFrom(field.getType());
-	}
+    private void setString(final Field field, final String value)
+    {
 
+        this.setField(field, value);
+    }
 
-	private boolean isLong(final Field field) {
+    private void setField(Field field, Object value)
+    {
 
-		return long.class.isAssignableFrom(field.getType()) || Long.class.isAssignableFrom(field.getType());
-	}
+        try {
 
-
-	private boolean isFloat(final Field field) {
-
-		return float.class.isAssignableFrom(field.getType()) || Float.class.isAssignableFrom(field.getType());
-	}
-
-
-	private boolean isString(final Field field) {
-
-		return String.class.isAssignableFrom(field.getType());
-	}
-
-
-	private void parse() {
-
-		this.annotatedArguments = new HashMap<String, CommandLineArgument>();
-		this.fields = new HashMap<String, Field>();
-
-		// TODO check for duplicate name declarations
-		for (final Field field : this.annotatedObject.getClass().getDeclaredFields()) {
-			final CommandLineArgument annotation = field.getAnnotation(CommandLineArgument.class);
-			if (annotation != null) {
-				String name = field.getName();
-				if (annotation.name() != null && !annotation.name().equals("")) {
-					name = annotation.name();
-				}
-				this.annotatedArguments.put(name, annotation);
-				this.fields.put(name, field);
-			}
-		}
-
-		this.parsed = true;
-
-	}
-
-
-	private void setBoolean(final Field field) {
-
-		this.setField(field, true);
-	}
-
-
-	private void setFile(final Field field, final String value) {
-
-		this.setField(field, new File(value));
-	}
-
-
-	private void setInt(final Field field, final String value) {
-
-		this.setField(field, Integer.valueOf(value));
-	}
-
-
-	private void setDouble(final Field field, final String value) {
-
-		this.setField(field, Double.valueOf(value));
-	}
-
-
-	private void setFloat(final Field field, final String value) {
-
-		this.setField(field, Float.valueOf(value));
-	}
-
-
-	private void setLong(final Field field, final String value) {
-
-		this.setField(field, Long.valueOf(value));
-	}
-
-
-	private void setString(final Field field, final String value) {
-
-		this.setField(field, value);
-	}
-
-
-	private void setField(Field field, Object value) {
-
-		try {
-
-			field.setAccessible(true);
-			field.set(this.annotatedObject, value);
-
-		} catch (final IllegalArgumentException e) {
-			this.errors.append(e.getMessage() + "\n");
-		} catch (final IllegalAccessException e) {
-			this.errors.append(e.getMessage() + "\n");
-		}
-	}
+            field.setAccessible(true);
+            field.set(this.annotatedObject, value);
+        } catch (final IllegalArgumentException e) {
+            this.errors.append(e.getMessage() + "\n");
+        } catch (final IllegalAccessException e) {
+            this.errors.append(e.getMessage() + "\n");
+        }
+    }
 
 }

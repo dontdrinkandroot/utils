@@ -23,22 +23,23 @@ import org.junit.Test;
 
 public class RandomUtilsTest {
 
-	@Ignore
-	@Test
-	public void testPareto() {
+    @Ignore
+    @Test
+    public void testPareto()
+    {
 
-		int iterations = 1000000;
-		int smaller = 0;
+        int iterations = 1000000;
+        int smaller = 0;
 
-		for (int i = 0; i < iterations; i++) {
+        for (int i = 0; i < iterations; i++) {
 
-			double rand = RandomUtils.pareto(.35);
-			if (rand <= 100) {
-				smaller++;
-			}
-		}
+            double rand = RandomUtils.pareto(.35);
+            if (rand <= 100) {
+                smaller++;
+            }
+        }
 
-		System.out.println(smaller * 100 / iterations);
-	}
+        System.out.println(smaller * 100 / iterations);
+    }
 
 }
