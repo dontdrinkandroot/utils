@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -19,18 +19,16 @@ package net.dontdrinkandroot.utils.lang.math;
 
 /**
  * Provides extra functionality for Java Number classes.
- * 
- * @author Philip W. Sorst
- * 
+ *
+ * @author Philip Washington Sorst <philip@sorst.net>
  */
-public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
-
+public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils
+{
     /**
      * Disabled constructor, utility class.
      */
     protected NumberUtils()
     {
-
     }
 
     /**
@@ -41,7 +39,6 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
      */
     public static int intValue(final Number number)
     {
-
         if (number == null) {
             return 0;
         }
@@ -52,13 +49,11 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
     /**
      * Get the null safe doubleValue of a Number. Defaults to 0.
      *
-     * @param number
-     *            The Number to convert.
+     * @param number The Number to convert.
      * @return The null safe doubleValue. Defaults to 0.
      */
     public static double doubleValue(final Number number)
     {
-
         if (number == null) {
             return 0d;
         }
@@ -69,13 +64,11 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
     /**
      * Get the null safe byteValue of a Number. Defaults to 0.
      *
-     * @param number
-     *            The Number to convert.
+     * @param number The Number to convert.
      * @return The null safe byteValue. Defaults to 0.
      */
     public static byte byteValue(final Number number)
     {
-
         if (number == null) {
             return 0;
         }
@@ -86,13 +79,11 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
     /**
      * Get the null safe longValue of a Number. Defaults to 0.
      *
-     * @param number
-     *            The Number to convert.
+     * @param number The Number to convert.
      * @return The null safe longValue. Defaults to 0.
      */
     public static long longValue(final Number number)
     {
-
         if (number == null) {
             return 0;
         }
@@ -103,13 +94,11 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
     /**
      * Get the null safe shortValue of a Number. Defaults to 0.
      *
-     * @param number
-     *            The Number to convert.
+     * @param number The Number to convert.
      * @return The null safe shortValue. Defaults to 0.
      */
     public static short shortValue(final Number number)
     {
-
         if (number == null) {
             return 0;
         }
@@ -120,13 +109,11 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
     /**
      * Get the null safe floatValue of a Number. Defaults to 0.
      *
-     * @param number
-     *            The Number to convert.
+     * @param number The Number to convert.
      * @return The null safe floatValue. Defaults to 0.
      */
     public static float floatValue(final Number number)
     {
-
         if (number == null) {
             return 0;
         }
@@ -136,7 +123,6 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
 
     public static int limit(int value, int min, int max)
     {
-
         if (min > max) {
             throw new IllegalArgumentException("min > max");
         }
@@ -146,7 +132,6 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
 
     public static long limit(long value, long min, long max)
     {
-
         if (min > max) {
             throw new IllegalArgumentException("min > max");
         }
@@ -156,7 +141,6 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
 
     public static float limit(float value, float min, float max)
     {
-
         if (min > max) {
             throw new IllegalArgumentException("min > max");
         }
@@ -166,7 +150,6 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
 
     public static double limit(double value, double min, double max)
     {
-
         if (min > max) {
             throw new IllegalArgumentException("min > max");
         }
@@ -176,7 +159,6 @@ public class NumberUtils extends org.apache.commons.lang3.math.NumberUtils {
 
     public static int compare(int lhs, int rhs)
     {
-
         if (lhs < rhs) {
             return -1;
         }

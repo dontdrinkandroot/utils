@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -27,7 +27,6 @@ import java.io.OutputStream;
  */
 public class FastByteArrayOutputStream extends OutputStream
 {
-
     /**
      * Buffer and size
      */

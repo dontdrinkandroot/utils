@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -23,10 +23,8 @@ import org.junit.Test;
 import java.util.*;
 import java.util.Map.Entry;
 
-
 public class CollectionUtilsTest
 {
-
     @Test
     public void testGetRandom()
     {
@@ -52,17 +50,17 @@ public class CollectionUtilsTest
     @Test
     public void meanTest()
     {
-        List<Integer> numbers = Arrays.asList(new Integer[]{1, 8, 5, 7, 3});
+        List<Integer> numbers = Arrays.asList(1, 8, 5, 7, 3);
         Assert.assertEquals(5d, CollectionUtils.getMean(numbers), 0.0d);
 
-        numbers = Arrays.asList(new Integer[]{1, 8, 2, 5, 7, 3});
+        numbers = Arrays.asList(1, 8, 2, 5, 7, 3);
         Assert.assertEquals(4d, CollectionUtils.getMean(numbers), 0.0d);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void meanTestWithNull()
     {
-        CollectionUtils.getMean(Arrays.asList(new Integer[]{1, 8, 2, null, 7, 3}));
+        CollectionUtils.getMean(Arrays.asList(1, 8, 2, null, 7, 3));
     }
 
     @Test
@@ -82,8 +80,8 @@ public class CollectionUtilsTest
     public void testFirst()
     {
         Assert.assertNull(CollectionUtils.first(new ArrayList<String>()));
-        Assert.assertEquals("one", CollectionUtils.first(Arrays.asList(new String[]{"one"})));
-        Assert.assertEquals("one", CollectionUtils.first(Arrays.asList(new String[]{"one", "two"})));
+        Assert.assertEquals("one", CollectionUtils.first(Arrays.asList("one")));
+        Assert.assertEquals("one", CollectionUtils.first(Arrays.asList("one", "two")));
     }
 
     @Test

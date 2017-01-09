@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -22,6 +22,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface CommandLineArgument {
@@ -31,5 +34,4 @@ public @interface CommandLineArgument {
     String name() default "";
 
     String description();
-
 }

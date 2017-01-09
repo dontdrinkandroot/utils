@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -19,11 +19,11 @@ package net.dontdrinkandroot.utils;
 
 /**
  * Helper class that can be used when handling percent values.
- * 
- * @author Philip Sorst
+ *
+ * @author Philip Washington Sorst <philip@sorst.net>
  */
-public final class Percent {
-
+public final class Percent
+{
     public static final int HUNDRED = 100;
 
     public static final int NINETY = 90;
@@ -43,8 +43,6 @@ public final class Percent {
      */
     private Percent()
     {
-
         /* Noop */
     }
-
 }

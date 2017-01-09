@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -19,17 +19,16 @@ package net.dontdrinkandroot.utils;
 
 /**
  * Utility class to easily access standard java system properties.
- * 
- * @author Philip W. Sorst
+ *
+ * @author Philip Washington Sorst <philip@sorst.net>
  */
-public class SystemProperties {
-
+public class SystemProperties
+{
     /**
      * Utility class, disabled constructor.
      */
     protected SystemProperties()
     {
-
         /* Noop */
     }
 
@@ -38,7 +37,6 @@ public class SystemProperties {
      */
     public static String getFileEncoding()
     {
-
         return System.getProperty("file.encoding");
     }
 
@@ -48,7 +46,6 @@ public class SystemProperties {
      */
     public static String getFileEncodingPkg()
     {
-
         return System.getProperty("file.encoding.pkg");
     }
 
@@ -57,7 +54,6 @@ public class SystemProperties {
      */
     public static String getFileSeparator()
     {
-
         return System.getProperty("file.separator");
     }
 
@@ -66,7 +62,6 @@ public class SystemProperties {
      */
     public static String getJavaClassPath()
     {
-
         return System.getProperty("java.class.path");
     }
 
@@ -75,7 +70,6 @@ public class SystemProperties {
      */
     public static String getJavaClassVersion()
     {
-
         return System.getProperty("java.class.version");
     }
 
@@ -85,7 +79,6 @@ public class SystemProperties {
      */
     public static String getJavaCompiler()
     {
-
         return System.getProperty("java.compiler");
     }
 
@@ -94,7 +87,6 @@ public class SystemProperties {
      */
     public static String getJavaHome()
     {
-
         return System.getProperty("java.home");
     }
 
@@ -103,7 +95,6 @@ public class SystemProperties {
      */
     public static String getJavaIoTmpdir()
     {
-
         return System.getProperty("java.io.tmpdir");
     }
 
@@ -112,7 +103,6 @@ public class SystemProperties {
      */
     public static String getJavaVersion()
     {
-
         return System.getProperty("java.version");
     }
 
@@ -121,7 +111,6 @@ public class SystemProperties {
      */
     public static String getJavaVendor()
     {
-
         return System.getProperty("java.vendor");
     }
 
@@ -130,7 +119,6 @@ public class SystemProperties {
      */
     public static String getJavaVendorUrl()
     {
-
         return System.getProperty("java.vendor.url");
     }
 
@@ -139,7 +127,6 @@ public class SystemProperties {
      */
     public static String getLineSeparator()
     {
-
         return System.getProperty("line.separator");
     }
 
@@ -148,7 +135,6 @@ public class SystemProperties {
      */
     public static String getOsName()
     {
-
         return System.getProperty("os.name");
     }
 
@@ -157,7 +143,6 @@ public class SystemProperties {
      */
     public static String getOsArch()
     {
-
         return System.getProperty("os.arch");
     }
 
@@ -166,7 +151,6 @@ public class SystemProperties {
      */
     public static String getOsVersion()
     {
-
         return System.getProperty("os.version");
     }
 
@@ -175,7 +159,6 @@ public class SystemProperties {
      */
     public static String getPathSeparator()
     {
-
         return System.getProperty("path.separator");
     }
 
@@ -184,7 +167,6 @@ public class SystemProperties {
      */
     public static String getUserDir()
     {
-
         return System.getProperty("user.dir");
     }
 
@@ -193,7 +175,6 @@ public class SystemProperties {
      */
     public static String getUserHome()
     {
-
         return System.getProperty("user.home");
     }
 
@@ -202,7 +183,6 @@ public class SystemProperties {
      */
     public static String getUserLanguage()
     {
-
         return System.getProperty("user.language");
     }
 
@@ -211,7 +191,6 @@ public class SystemProperties {
      */
     public static String getUserName()
     {
-
         return System.getProperty("user.name");
     }
 
@@ -220,7 +199,6 @@ public class SystemProperties {
      */
     public static String getUserRegion()
     {
-
         return System.getProperty("user.region");
     }
 
@@ -229,8 +207,6 @@ public class SystemProperties {
      */
     public static String getUserTimezone()
     {
-
         return System.getProperty("user.timezone");
     }
-
 }

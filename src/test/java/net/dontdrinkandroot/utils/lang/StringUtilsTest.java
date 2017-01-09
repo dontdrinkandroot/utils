@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -25,13 +25,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class StringUtilsTest {
-
+public class StringUtilsTest
+{
     @Test
     public void testIterableJoin()
     {
-
         List<String> parts = new ArrayList<String>();
         parts.add("a");
         parts.add("bee");
@@ -46,7 +44,6 @@ public class StringUtilsTest {
     @Test
     public void testArrayJoin()
     {
-
         String[] parts = new String[3];
         parts[0] = "a";
         parts[1] = "bee";
@@ -57,5 +54,4 @@ public class StringUtilsTest {
 
         Assert.assertEquals("a,bee,cee", result.toString());
     }
-
 }

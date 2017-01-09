@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -20,9 +20,12 @@ package net.dontdrinkandroot.utils.pair;
 import java.io.Serializable;
 import java.util.Iterator;
 
-
-public class Pair<T extends Serializable> implements Serializable, Iterable<T> {
-
+/**
+ * @param <T> Type of the Pair Elements.
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
+public class Pair<T extends Serializable> implements Serializable, Iterable<T>
+{
     private static final long serialVersionUID = 1L;
 
     private T first;
@@ -31,44 +34,37 @@ public class Pair<T extends Serializable> implements Serializable, Iterable<T> {
 
     public Pair()
     {
-
     }
 
     public Pair(T first, T second)
     {
-
         this.first = first;
         this.second = second;
     }
 
     public T getFirst()
     {
-
         return this.first;
     }
 
     public void setFirst(T first)
     {
-
         this.first = first;
     }
 
     public T getSecond()
     {
-
         return this.second;
     }
 
     public void setSecond(T second)
     {
-
         this.second = second;
     }
 
     @Override
     public int hashCode()
     {
-
         final int prime = 31;
         int result = 1;
         result = prime * result + ((this.first == null) ? 0 : this.first.hashCode());
@@ -79,7 +75,6 @@ public class Pair<T extends Serializable> implements Serializable, Iterable<T> {
     @Override
     public boolean equals(Object obj)
     {
-
         if (this == obj) {
             return true;
         }
@@ -110,23 +105,19 @@ public class Pair<T extends Serializable> implements Serializable, Iterable<T> {
     @Override
     public Iterator<T> iterator()
     {
-
         return new Iterator<T>()
         {
-
             private boolean isFirst = true;
 
             @Override
             public boolean hasNext()
             {
-
                 return this.isFirst;
             }
 
             @Override
             public T next()
             {
-
                 if (this.isFirst) {
                     this.isFirst = false;
                     return Pair.this.first;
@@ -138,10 +129,8 @@ public class Pair<T extends Serializable> implements Serializable, Iterable<T> {
             @Override
             public void remove()
             {
-
                 throw new UnsupportedOperationException();
             }
         };
     }
-
 }

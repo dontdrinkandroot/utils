@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -20,13 +20,11 @@ package net.dontdrinkandroot.utils;
 import junit.framework.Assert;
 import org.junit.Test;
 
-
-public class SystemPropertiesTest {
-
+public class SystemPropertiesTest
+{
     @Test
     public void test()
     {
-
         Assert.assertEquals(System.getProperty("file.encoding"), SystemProperties.getFileEncoding());
         Assert.assertEquals(System.getProperty("file.encoding.pkg"), SystemProperties.getFileEncodingPkg());
         Assert.assertEquals(System.getProperty("file.separator"), SystemProperties.getFileSeparator());

@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -20,14 +20,12 @@ package net.dontdrinkandroot.utils.lang.math;
 import org.junit.Ignore;
 import org.junit.Test;
 
-
-public class RandomUtilsTest {
-
+public class RandomUtilsTest
+{
     @Ignore
     @Test
     public void testPareto()
     {
-
         int iterations = 1000000;
         int smaller = 0;
 
@@ -41,5 +39,4 @@ public class RandomUtilsTest {
 
         System.out.println(smaller * 100 / iterations);
     }
-
 }

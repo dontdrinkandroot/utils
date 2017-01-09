@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -25,10 +25,8 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.Vector;
 
-
 public class SerializationUtilsTest
 {
-
     @Test
     public void clonePerformanceTest()
     {
@@ -85,5 +83,4 @@ public class SerializationUtilsTest
     {
         Assert.assertEquals("Test", SerializationUtils.fastClone("Test"));
     }
-
 }

@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -19,9 +19,11 @@ package net.dontdrinkandroot.utils.logging;
 
 import org.slf4j.Logger;
 
-
-public class IntervalLogger {
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
+public class IntervalLogger
+{
     private final Logger logger;
 
     private final long interval;
@@ -30,7 +32,6 @@ public class IntervalLogger {
 
     public IntervalLogger(final Logger logger, final long interval)
     {
-
         this.logger = logger;
         this.interval = interval;
         this.lastOutput = System.currentTimeMillis();
@@ -38,12 +39,10 @@ public class IntervalLogger {
 
     public final void info(final String msg)
     {
-
         final long now = System.currentTimeMillis();
         if (now - this.lastOutput > this.interval) {
             this.logger.info(msg);
             this.lastOutput = now;
         }
     }
-
 }

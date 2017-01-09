@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -20,9 +20,11 @@ package net.dontdrinkandroot.utils.resource;
 import java.io.IOException;
 import java.io.OutputStream;
 
-
-public abstract class StreamableWebResource {
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
+public abstract class StreamableWebResource
+{
     public abstract void write(OutputStream os) throws IOException;
 
     public abstract Integer getErrorCode();
@@ -40,5 +42,4 @@ public abstract class StreamableWebResource {
     public abstract Long getLastModified();
 
     public abstract Long getExpiry();
-
 }

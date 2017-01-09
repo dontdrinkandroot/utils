@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -19,9 +19,11 @@ package net.dontdrinkandroot.utils.lang.time;
 
 import java.text.SimpleDateFormat;
 
-
-public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
+public class DateUtils extends org.apache.commons.lang3.time.DateUtils
+{
     public static final int SECONDS_PER_MINUTE = 60;
 
     public static final int MINUTES_PER_HOUR = 60;
@@ -31,5 +33,4 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static final int DAYS_PER_WEEK = 7;
 
     public static SimpleDateFormat RFC3339Format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-
 }

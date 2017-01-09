@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -25,10 +25,11 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
 public class CachedFileResource extends StreamableWebResource
 {
-
     private final File file;
 
     private Long expiry;

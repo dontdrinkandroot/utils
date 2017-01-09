@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -19,26 +19,24 @@ package net.dontdrinkandroot.utils;
 
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * This enumeration implements the following standard:
  * <p>
  * ISO 639-1:2002, Codes for the representation of names of languages - Part 1: Alpha-2 code, is the first part of the
  * ISO 639 series of international standards for language codes. Part 1 covers the registration of two-letter codes.
  * There are 136 two-letter codes registered. The registered codes cover the world's major languages.
- * 
+ * <p>
  * These codes are a useful international, and formal, shorthand for indicating languages. (Source: <a
  * href="http://en.wikipedia.org/wiki/ISO_639-1">Wikipedia</a>)
  * <p>
  * <a href="http://www.loc.gov/standards/iso639-2/php/English_list.php"> Offical list </a>
  * <p>
  * It is annotated with {@link XmlEnumValue}s, so it can be de-/serialized using jaxb.
- * 
- * @author Philip Sorst
- * 
+ *
+ * @author Philip Washington Sorst <philip@sorst.net>
  */
-public enum ISO_639_1 {
-
+public enum ISO_639_1
+{
     /**
      * Afar.
      */
@@ -63,63 +61,93 @@ public enum ISO_639_1 {
     @XmlEnumValue("ak")
     AK("Akan"),
 
-    /** Albanian. */
+    /**
+     * Albanian.
+     */
     @XmlEnumValue("sq")
     SQ("Albanian"),
 
-    /** Amharic. */
+    /**
+     * Amharic.
+     */
     @XmlEnumValue("am")
     AM("Amharic"),
 
-    /** Arabic. */
+    /**
+     * Arabic.
+     */
     @XmlEnumValue("ar")
     AR("Arabic"),
 
-    /** Aragonese. */
+    /**
+     * Aragonese.
+     */
     @XmlEnumValue("an")
     AN("Aragonese"),
 
-    /** Armenian. */
+    /**
+     * Armenian.
+     */
     @XmlEnumValue("hy")
     HY("Armenian"),
 
-    /** Assamese. */
+    /**
+     * Assamese.
+     */
     @XmlEnumValue("as")
     AS("Assamese"),
 
-    /** Avaric. */
+    /**
+     * Avaric.
+     */
     @XmlEnumValue("av")
     AV("Avaric"),
 
-    /** Avestan. */
+    /**
+     * Avestan.
+     */
     @XmlEnumValue("ae")
     AE("Avestan"),
 
-    /** Aymara. */
+    /**
+     * Aymara.
+     */
     @XmlEnumValue("ay")
     AY("Aymara"),
 
-    /** Azerbaijani. */
+    /**
+     * Azerbaijani.
+     */
     @XmlEnumValue("az")
     AZ("Azerbaijani"),
 
-    /** Bashkir. */
+    /**
+     * Bashkir.
+     */
     @XmlEnumValue("ba")
     BA("Bashkir"),
 
-    /** Bambara. */
+    /**
+     * Bambara.
+     */
     @XmlEnumValue("bm")
     BM("Bambara"),
 
-    /** Basque. */
+    /**
+     * Basque.
+     */
     @XmlEnumValue("eu")
     EU("Basque"),
 
-    /** Belarusian. */
+    /**
+     * Belarusian.
+     */
     @XmlEnumValue("be")
     BE("Belarusian"),
 
-    /** Bengali. */
+    /**
+     * Bengali.
+     */
     @XmlEnumValue("bn")
     BN("Bengali"),
 
@@ -183,7 +211,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("zh")
     ZH("Chinese"),
 
-    /** Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic. */
+    /**
+     * Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic.
+     */
     @XmlEnumValue("cu")
     CU("Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian;" + "Old Church Slavonic"),
 
@@ -193,7 +223,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("cv")
     CV("Chuvash"),
 
-    /** Cornish. */
+    /**
+     * Cornish.
+     */
     @XmlEnumValue("kw")
     KW("Cornish"),
 
@@ -221,7 +253,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("da")
     DA("Danish"),
 
-    /** Divehi; Dhivehi; Maldivian. */
+    /**
+     * Divehi; Dhivehi; Maldivian.
+     */
     @XmlEnumValue("dv")
     DV("Divehi; Dhivehi; Maldivian"),
 
@@ -267,15 +301,21 @@ public enum ISO_639_1 {
     @XmlEnumValue("fo")
     FO("Faroese"),
 
-    /** Fijian. */
+    /**
+     * Fijian.
+     */
     @XmlEnumValue("fj")
     FJ("Fijian"),
 
-    /** Finnish. */
+    /**
+     * Finnish.
+     */
     @XmlEnumValue("fi")
     FI("Finnish"),
 
-    /** French. */
+    /**
+     * French.
+     */
     @XmlEnumValue("fr")
     FR("French"),
 
@@ -291,15 +331,21 @@ public enum ISO_639_1 {
     @XmlEnumValue("ff")
     FF("Fulah"),
 
-    /** Georgian. */
+    /**
+     * Georgian.
+     */
     @XmlEnumValue("ka")
     KA("Georgian"),
 
-    /** German. */
+    /**
+     * German.
+     */
     @XmlEnumValue("de")
     DE("German"),
 
-    /** Gaelic; Scottish Gaelic. */
+    /**
+     * Gaelic; Scottish Gaelic.
+     */
     @XmlEnumValue("gd")
     GD("Gaelic; Scottish Gaelic"),
 
@@ -321,7 +367,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("gv")
     GV("Manx"),
 
-    /** Greek, Modern (1453-). */
+    /**
+     * Greek, Modern (1453-).
+     */
     @XmlEnumValue("el")
     EL("Greek, Modern (1453-)"),
 
@@ -337,7 +385,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("gu")
     GU("Gujarati"),
 
-    /** Haitian; Haitian Creole. */
+    /**
+     * Haitian; Haitian Creole.
+     */
     @XmlEnumValue("ht")
     HT("Haitian; Haitian Creole"),
 
@@ -359,7 +409,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("hz")
     HZ("Herero"),
 
-    /** Hindi. */
+    /**
+     * Hindi.
+     */
     @XmlEnumValue("hi")
     HI("Hindi"),
 
@@ -405,11 +457,15 @@ public enum ISO_639_1 {
     @XmlEnumValue("ii")
     II("Sichuan Yi; Nuosu"),
 
-    /** Inuktitut. */
+    /**
+     * Inuktitut.
+     */
     @XmlEnumValue("iu")
     IU("Inuktitut"),
 
-    /** Interlingue; Occidental. */
+    /**
+     * Interlingue; Occidental.
+     */
     @XmlEnumValue("ie")
     IE("Interlingue; Occidental"),
 
@@ -425,15 +481,21 @@ public enum ISO_639_1 {
     @XmlEnumValue("id")
     ID("Indonesian"),
 
-    /** Inupiaq. */
+    /**
+     * Inupiaq.
+     */
     @XmlEnumValue("ik")
     IK("Inupiaq"),
 
-    /** Italian. */
+    /**
+     * Italian.
+     */
     @XmlEnumValue("it")
     IT("Italian"),
 
-    /** Javanese. */
+    /**
+     * Javanese.
+     */
     @XmlEnumValue("jv")
     JV("Javanese"),
 
@@ -443,11 +505,15 @@ public enum ISO_639_1 {
     @XmlEnumValue("ja")
     JA("Japanese"),
 
-    /** Kalaallisut; Greenlandic. */
+    /**
+     * Kalaallisut; Greenlandic.
+     */
     @XmlEnumValue("kl")
     KL("Kalaallisut; Greenlandic"),
 
-    /** Kannada. */
+    /**
+     * Kannada.
+     */
     @XmlEnumValue("kn")
     KN("Kannada"),
 
@@ -475,7 +541,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("km")
     KM("Central Khmer"),
 
-    /** Kikuyu; Gikuyu. */
+    /**
+     * Kikuyu; Gikuyu.
+     */
     @XmlEnumValue("ki")
     KI("Kikuyu; Gikuyu"),
 
@@ -539,7 +607,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("lv")
     LV("Latvian"),
 
-    /** Limburgan; Limburger; Limburgish. */
+    /**
+     * Limburgan; Limburger; Limburgish.
+     */
     @XmlEnumValue("li")
     LI("Limburgan; Limburger; Limburgish"),
 
@@ -555,7 +625,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("lt")
     LT("Lithuanian"),
 
-    /** Luxembourgish; Letzeburgesch. */
+    /**
+     * Luxembourgish; Letzeburgesch.
+     */
     @XmlEnumValue("lb")
     LB("Luxembourgish; Letzeburgesch"),
 
@@ -637,15 +709,21 @@ public enum ISO_639_1 {
     @XmlEnumValue("nv")
     NV("Navajo; Navaho"),
 
-    /** Ndebele, South; South Ndebele. */
+    /**
+     * Ndebele, South; South Ndebele.
+     */
     @XmlEnumValue("nr")
     NR("Ndebele, South; South Ndebele"),
 
-    /** Ndebele, North; North Ndebele. */
+    /**
+     * Ndebele, North; North Ndebele.
+     */
     @XmlEnumValue("nd")
     ND("Ndebele, North; North Ndebele"),
 
-    /** Ndonga. */
+    /**
+     * Ndonga.
+     */
     @XmlEnumValue("ng")
     NG("Ndonga"),
 
@@ -655,11 +733,15 @@ public enum ISO_639_1 {
     @XmlEnumValue("ne")
     NE("Nepali"),
 
-    /** Norwegian Nynorsk; Nynorsk, Norwegian. */
+    /**
+     * Norwegian Nynorsk; Nynorsk, Norwegian.
+     */
     @XmlEnumValue("nn")
     NN("Norwegian Nynorsk; Nynorsk, Norwegian"),
 
-    /** Bokmål, Norwegian; Norwegian Bokmål. */
+    /**
+     * Bokmål, Norwegian; Norwegian Bokmål.
+     */
     @XmlEnumValue("nb")
     NB("Bokmål, Norwegian; Norwegian Bokmål"),
 
@@ -669,7 +751,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("no")
     NO("Norwegian"),
 
-    /** Chichewa; Chewa; Nyanja. */
+    /**
+     * Chichewa; Chewa; Nyanja.
+     */
     @XmlEnumValue("ny")
     NY("Chichewa; Chewa; Nyanja"),
 
@@ -691,23 +775,33 @@ public enum ISO_639_1 {
     @XmlEnumValue("or")
     OR("Oriya"),
 
-    /** Oromo. */
+    /**
+     * Oromo.
+     */
     @XmlEnumValue("om")
     OM("Oromo"),
 
-    /** Ossetian; Ossetic. */
+    /**
+     * Ossetian; Ossetic.
+     */
     @XmlEnumValue("os")
     OS("Ossetian; Ossetic"),
 
-    /** Panjabi; Punjabi. */
+    /**
+     * Panjabi; Punjabi.
+     */
     @XmlEnumValue("pa")
     PA("Panjabi; Punjabi"),
 
-    /** Persian. */
+    /**
+     * Persian.
+     */
     @XmlEnumValue("fa")
     FA("Persian"),
 
-    /** Pali. */
+    /**
+     * Pali.
+     */
     @XmlEnumValue("pi")
     PI("Pali"),
 
@@ -717,11 +811,15 @@ public enum ISO_639_1 {
     @XmlEnumValue("pl")
     PL("Polish"),
 
-    /** Portuguese. */
+    /**
+     * Portuguese.
+     */
     @XmlEnumValue("pt")
     PT("Portuguese"),
 
-    /** Pushto; Pashto. */
+    /**
+     * Pushto; Pashto.
+     */
     @XmlEnumValue("ps")
     PS("Pushto; Pashto"),
 
@@ -743,15 +841,21 @@ public enum ISO_639_1 {
     @XmlEnumValue("ro")
     RO("Romanian; Moldavian; Moldovan"),
 
-    /** Rundi. */
+    /**
+     * Rundi.
+     */
     @XmlEnumValue("rn")
     RN("Rundi"),
 
-    /** Russian. */
+    /**
+     * Russian.
+     */
     @XmlEnumValue("ru")
     RU("Russian"),
 
-    /** Sango. */
+    /**
+     * Sango.
+     */
     @XmlEnumValue("sg")
     SG("Sango"),
 
@@ -761,7 +865,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("sa")
     SA("Sanskrit"),
 
-    /** Sinhala; Sinhalese. */
+    /**
+     * Sinhala; Sinhalese.
+     */
     @XmlEnumValue("si")
     SI("Sinhala; Sinhalese"),
 
@@ -777,7 +883,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("sl")
     SL("Slovenian"),
 
-    /** Northern Sami. */
+    /**
+     * Northern Sami.
+     */
     @XmlEnumValue("se")
     SE("Northern Sami"),
 
@@ -805,7 +913,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("so")
     SO("Somali"),
 
-    /** Sotho, Southern. */
+    /**
+     * Sotho, Southern.
+     */
     @XmlEnumValue("st")
     ST("Sotho, Southern"),
 
@@ -833,7 +943,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("ss")
     SS("Swati"),
 
-    /** Sundanese. */
+    /**
+     * Sundanese.
+     */
     @XmlEnumValue("su")
     SU("Sundanese"),
 
@@ -843,31 +955,45 @@ public enum ISO_639_1 {
     @XmlEnumValue("sw")
     SW("Swahili"),
 
-    /** Swedish. */
+    /**
+     * Swedish.
+     */
     @XmlEnumValue("sv")
     SV("Swedish"),
 
-    /** Tahitian. */
+    /**
+     * Tahitian.
+     */
     @XmlEnumValue("ty")
     TY("Tahitian"),
 
-    /** Tamil. */
+    /**
+     * Tamil.
+     */
     @XmlEnumValue("ta")
     TA("Tamil"),
 
-    /** Tatar. */
+    /**
+     * Tatar.
+     */
     @XmlEnumValue("tt")
     TT("Tatar"),
 
-    /** Telugu. */
+    /**
+     * Telugu.
+     */
     @XmlEnumValue("te")
     TE("Telugu"),
 
-    /** Tajik. */
+    /**
+     * Tajik.
+     */
     @XmlEnumValue("tg")
     TG("Tajik"),
 
-    /** Tagalog. */
+    /**
+     * Tagalog.
+     */
     @XmlEnumValue("tl")
     TL("Tagalog"),
 
@@ -877,7 +1003,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("th")
     TH("Thai"),
 
-    /** Tibetan. */
+    /**
+     * Tibetan.
+     */
     @XmlEnumValue("bo")
     BO("Tibetan"),
 
@@ -899,7 +1027,9 @@ public enum ISO_639_1 {
     @XmlEnumValue("tn")
     TN("Tswana"),
 
-    /** Tsonga. */
+    /**
+     * Tsonga.
+     */
     @XmlEnumValue("ts")
     TS("Tsonga"),
 
@@ -939,83 +1069,108 @@ public enum ISO_639_1 {
     @XmlEnumValue("ur")
     UR("Urdu"),
 
-    /** Uzbek. */
+    /**
+     * Uzbek.
+     */
     @XmlEnumValue("uz")
     UZ("Uzbek"),
 
-    /** Venda. */
+    /**
+     * Venda.
+     */
     @XmlEnumValue("ve")
     VE("Venda"),
 
-    /** Vietnamese. */
+    /**
+     * Vietnamese.
+     */
     @XmlEnumValue("vi")
     VI("Vietnamese"),
 
-    /** Volapük. */
+    /**
+     * Volapük.
+     */
     @XmlEnumValue("vo")
     VO("Volapük"),
 
-    /** Welsh. */
+    /**
+     * Welsh.
+     */
     @XmlEnumValue("cy")
     CY("Welsh"),
 
-    /** Walloon. */
+    /**
+     * Walloon.
+     */
     @XmlEnumValue("wa")
     WA("Walloon"),
 
-    /** Wolof. */
+    /**
+     * Wolof.
+     */
     @XmlEnumValue("wo")
     WO("Wolof"),
 
-    /** Xhosa. */
+    /**
+     * Xhosa.
+     */
     @XmlEnumValue("xh")
     XH("Xhosa"),
 
-    /** Yiddish. */
+    /**
+     * Yiddish.
+     */
     @XmlEnumValue("yi")
     YI("Yiddish"),
 
-    /** Yoruba. */
+    /**
+     * Yoruba.
+     */
     @XmlEnumValue("yo")
     YO("Yoruba"),
 
-    /** Zhuang; Chuang. */
+    /**
+     * Zhuang; Chuang.
+     */
     @XmlEnumValue("za")
     ZA("Zhuang; Chuang"),
 
-    /** Zulu. */
+    /**
+     * Zulu.
+     */
     @XmlEnumValue("zu")
     ZU("Zulu");
 
-    /** The country name. */
+    /**
+     * The country name.
+     */
     private String name;
-
 
     /**
      * Default constructor.
-     * 
-     * @param name
-     *            The country name
+     *
+     * @param name The country name
      */
-    private ISO_639_1(final String name) {
+    ISO_639_1(final String name)
+    {
 
         this.name = name;
     }
 
-
     /**
      * Retrieve the country name.
-     * 
+     *
      * @return The country name
      */
-    public String getName() {
+    public String getName()
+    {
 
         return this.name;
     }
 
-
     @Override
-    public String toString() {
+    public String toString()
+    {
 
         return super.toString().toLowerCase();
     }

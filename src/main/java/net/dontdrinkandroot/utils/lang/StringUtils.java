@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -21,20 +21,17 @@ import org.apache.commons.collections15.Transformer;
 
 import java.util.Iterator;
 
-
 /**
- * 
- * @author Philip W. Sorst
+ * @author Philip Washington Sorst <philip@sorst.net>
  */
-public class StringUtils extends org.apache.commons.lang3.StringUtils {
-
+public class StringUtils extends org.apache.commons.lang3.StringUtils
+{
     public static <T> CharSequence join(
             final Iterable<T> objects,
             final String seperator,
             final Transformer<T, String> toStringTransformer
     )
     {
-
         final StringBuffer sb = new StringBuffer();
         final Iterator<T> iterator = objects.iterator();
         while (iterator.hasNext()) {
@@ -54,7 +51,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
             final Transformer<T, String> toStringTransformer
     )
     {
-
         final StringBuffer sb = new StringBuffer();
         for (int i = 0; i < objects.length; i++) {
             final T object = objects[i];
@@ -66,5 +62,4 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
         return sb;
     }
-
 }

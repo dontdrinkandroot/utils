@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -19,7 +19,6 @@ package net.dontdrinkandroot.utils;
 
 import javax.xml.bind.annotation.XmlEnumValue;
 
-
 /**
  * This enumeration implements the following standard:
  * <p>
@@ -34,11 +33,11 @@ import javax.xml.bind.annotation.XmlEnumValue;
  * Official List </a>
  * <p>
  * It is annotated with {@link XmlEnumValue}s, so it can be de-/serialized using jaxb.
- * 
- * @author Philip Sorst
+ *
+ * @author Philip Washington Sorst <philip@sorst.net>
  */
-public enum ISO_3166_1_alpha2 {
-
+public enum ISO_3166_1_alpha2
+{
     /**
      * Afghanistan.
      */
@@ -99,7 +98,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("AG")
     AG("Antigua and Barbuda"),
 
-    /** Argentina. */
+    /**
+     * Argentina.
+     */
     @XmlEnumValue("AR")
     AR("Argentina"),
 
@@ -133,35 +134,51 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("AZ")
     AZ("Azerbaijan"),
 
-    /** Bahamas. */
+    /**
+     * Bahamas.
+     */
     @XmlEnumValue("BS")
     BS("Bahamas"),
 
-    /** Bahrain. */
+    /**
+     * Bahrain.
+     */
     @XmlEnumValue("BH")
     BH("Bahrain"),
 
-    /** Bangladesh. */
+    /**
+     * Bangladesh.
+     */
     @XmlEnumValue("BD")
     BD("Bangladesh"),
 
-    /** Barbados. */
+    /**
+     * Barbados.
+     */
     @XmlEnumValue("BB")
     BB("Barbados"),
 
-    /** Belarus. */
+    /**
+     * Belarus.
+     */
     @XmlEnumValue("BY")
     BY("Belarus"),
 
-    /** Belgium. */
+    /**
+     * Belgium.
+     */
     @XmlEnumValue("BE")
     BE("Belgium"),
 
-    /** Belize. */
+    /**
+     * Belize.
+     */
     @XmlEnumValue("BZ")
     BZ("Belize"),
 
-    /** Benin. */
+    /**
+     * Benin.
+     */
     @XmlEnumValue("BJ")
     BJ("Benin"),
 
@@ -183,7 +200,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("BO")
     BO("Bolivia, Plurinational State of"),
 
-    /** Bosnia and Herzegovina. */
+    /**
+     * Bosnia and Herzegovina.
+     */
     @XmlEnumValue("BA")
     BA("Bosnia and Herzegovina"),
 
@@ -199,11 +218,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("BV")
     BV("Bouvet Island"),
 
-    /** Brazil. */
+    /**
+     * Brazil.
+     */
     @XmlEnumValue("BR")
     BR("Brazil"),
 
-    /** British Indian Ocean Territory. */
+    /**
+     * British Indian Ocean Territory.
+     */
     @XmlEnumValue("IO")
     IO("British Indian Ocean Territory"),
 
@@ -213,19 +236,27 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("BN")
     BN("Brunei Darussalam"),
 
-    /** Bulgaria. */
+    /**
+     * Bulgaria.
+     */
     @XmlEnumValue("BG")
     BG("Bulgaria"),
 
-    /** Burkina Faso. */
+    /**
+     * Burkina Faso.
+     */
     @XmlEnumValue("BF")
     BF("Burkina Faso"),
 
-    /** Burundi. */
+    /**
+     * Burundi.
+     */
     @XmlEnumValue("BI")
     BI("Burundi"),
 
-    /** Cambodia. */
+    /**
+     * Cambodia.
+     */
     @XmlEnumValue("KH")
     KH("Cambodia"),
 
@@ -247,7 +278,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("CV")
     CV("Cape Verde"),
 
-    /** Cayman Islands. */
+    /**
+     * Cayman Islands.
+     */
     @XmlEnumValue("KY")
     KY("Cayman Islands"),
 
@@ -293,7 +326,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("CO")
     CO("Colombia"),
 
-    /** Comoros. */
+    /**
+     * Comoros.
+     */
     @XmlEnumValue("KM")
     KM("Comoros"),
 
@@ -303,11 +338,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("CG")
     CG("Congo"),
 
-    /** Congo, The Democratic Republic of the. */
+    /**
+     * Congo, The Democratic Republic of the.
+     */
     @XmlEnumValue("CD")
     CD("Congo, The Democratic Republic of the"),
 
-    /** Cook Islands. */
+    /**
+     * Cook Islands.
+     */
     @XmlEnumValue("CK")
     CK("Cook Islands"),
 
@@ -317,7 +356,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("CR")
     CR("Costa Rica"),
 
-    /** Côte d'Ivoire. */
+    /**
+     * Côte d'Ivoire.
+     */
     @XmlEnumValue("CI")
     CI("Côte d'Ivoire"),
 
@@ -363,7 +404,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("DM")
     DM("Dominica"),
 
-    /** Dominican Republic. */
+    /**
+     * Dominican Republic.
+     */
     @XmlEnumValue("DO")
     DO("Dominican Republic"),
 
@@ -415,7 +458,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("FK")
     FK("Falkland Islands (Malvinas)"),
 
-    /** Faroe Islands. */
+    /**
+     * Faroe Islands.
+     */
     @XmlEnumValue("FO")
     FO("Faroe Islands"),
 
@@ -449,11 +494,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("PF")
     PF("French Polynesia"),
 
-    /** French Southern Territories. */
+    /**
+     * French Southern Territories.
+     */
     @XmlEnumValue("TF")
     TF("French Southern Territories"),
 
-    /** Gabon. */
+    /**
+     * Gabon.
+     */
     @XmlEnumValue("GA")
     GA("Gabon"),
 
@@ -535,7 +584,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("GN")
     GN("Guinea"),
 
-    /** Guinea-Bissau. */
+    /**
+     * Guinea-Bissau.
+     */
     @XmlEnumValue("GW")
     GW("Guinea-Bissau"),
 
@@ -551,11 +602,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("HT")
     HT("Haiti"),
 
-    /** Heard Island and McDonald Islands. */
+    /**
+     * Heard Island and McDonald Islands.
+     */
     @XmlEnumValue("HM")
     HM("Heard Island and McDonald Islands"),
 
-    /** Holy See (Vatican City State). */
+    /**
+     * Holy See (Vatican City State).
+     */
     @XmlEnumValue("VA")
     VA("Holy See (Vatican City State)"),
 
@@ -571,11 +626,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("HK")
     HK("Hong Kong"),
 
-    /** Hungary. */
+    /**
+     * Hungary.
+     */
     @XmlEnumValue("HU")
     HU("Hungary"),
 
-    /** Iceland. */
+    /**
+     * Iceland.
+     */
     @XmlEnumValue("IS")
     IS("Iceland"),
 
@@ -585,11 +644,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("IN")
     IN("India"),
 
-    /** Indonesia. */
+    /**
+     * Indonesia.
+     */
     @XmlEnumValue("ID")
     ID("Indonesia"),
 
-    /** Iran, Islamic Republic of. */
+    /**
+     * Iran, Islamic Republic of.
+     */
     @XmlEnumValue("IR")
     IR("Iran, Islamic Republic of"),
 
@@ -665,7 +728,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("KI")
     KI("Kiribati"),
 
-    /** Korea, Democratic People's Republic of. */
+    /**
+     * Korea, Democratic People's Republic of.
+     */
     @XmlEnumValue("KP")
     KP("Korea, Democratic People's Republic of"),
 
@@ -687,7 +752,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("KG")
     KG("Kyrgyzstan"),
 
-    /** Lao People's Democratic Republic. */
+    /**
+     * Lao People's Democratic Republic.
+     */
     @XmlEnumValue("LA")
     LA("Lao People's Democratic Republic"),
 
@@ -715,7 +782,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("LR")
     LR("Liberia"),
 
-    /** Libyan Arab Jamahiriya. */
+    /**
+     * Libyan Arab Jamahiriya.
+     */
     @XmlEnumValue("LY")
     LY("Libyan Arab Jamahiriya"),
 
@@ -743,7 +812,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("MO")
     MO("Macao"),
 
-    /** Macedonia, The Former Yugoslav Republic of. */
+    /**
+     * Macedonia, The Former Yugoslav Republic of.
+     */
     @XmlEnumValue("MK")
     MK("Macedonia, The Former Yugoslav Republic of"),
 
@@ -783,7 +854,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("MT")
     MT("Malta"),
 
-    /** Marshall Islands. */
+    /**
+     * Marshall Islands.
+     */
     @XmlEnumValue("MH")
     MH("Marshall Islands"),
 
@@ -817,7 +890,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("MX")
     MX("Mexico"),
 
-    /** Micronesia, Federated States of. */
+    /**
+     * Micronesia, Federated States of.
+     */
     @XmlEnumValue("FM")
     FM("Micronesia, Federated States of"),
 
@@ -827,7 +902,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("MD")
     MD("Moldova, Republic of"),
 
-    /** Monaco. */
+    /**
+     * Monaco.
+     */
     @XmlEnumValue("MC")
     MC("Monaco"),
 
@@ -843,11 +920,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("ME")
     ME("Montenegro"),
 
-    /** Montserrat. */
+    /**
+     * Montserrat.
+     */
     @XmlEnumValue("MS")
     MS("Montserrat"),
 
-    /** Morocco. */
+    /**
+     * Morocco.
+     */
     @XmlEnumValue("MA")
     MA("Morocco"),
 
@@ -863,7 +944,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("MM")
     MM("Myanmar"),
 
-    /** Namibia. */
+    /**
+     * Namibia.
+     */
     @XmlEnumValue("NA")
     NA("Namibia"),
 
@@ -879,11 +962,15 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("NP")
     NP("Nepal"),
 
-    /** Netherlands. */
+    /**
+     * Netherlands.
+     */
     @XmlEnumValue("NL")
     NL("Netherlands"),
 
-    /** Netherlands Antilles. */
+    /**
+     * Netherlands Antilles.
+     */
     @XmlEnumValue("AN")
     AN("Netherlands Antilles"),
 
@@ -899,15 +986,21 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("NZ")
     NZ("New Zealand"),
 
-    /** Nicaragua. */
+    /**
+     * Nicaragua.
+     */
     @XmlEnumValue("NI")
     NI("Nicaragua"),
 
-    /** Niger. */
+    /**
+     * Niger.
+     */
     @XmlEnumValue("NE")
     NE("Niger"),
 
-    /** Nigeria. */
+    /**
+     * Nigeria.
+     */
     @XmlEnumValue("NG")
     NG("Nigeria"),
 
@@ -923,7 +1016,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("NF")
     NF("Norfolk Island"),
 
-    /** Northern Mariana Islands. */
+    /**
+     * Northern Mariana Islands.
+     */
     @XmlEnumValue("MP")
     MP("Northern Mariana Islands"),
 
@@ -945,15 +1040,21 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("PK")
     PK("Pakistan"),
 
-    /** Palau. */
+    /**
+     * Palau.
+     */
     @XmlEnumValue("PW")
     PW("Palau"),
 
-    /** Palestinian Territory, Occupied. */
+    /**
+     * Palestinian Territory, Occupied.
+     */
     @XmlEnumValue("PS")
     PS("Palestinian Territory, Occupied"),
 
-    /** Panama. */
+    /**
+     * Panama.
+     */
     @XmlEnumValue("PA")
     PA("Panama"),
 
@@ -987,15 +1088,21 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("PN")
     PN("Pitcairn"),
 
-    /** Poland. */
+    /**
+     * Poland.
+     */
     @XmlEnumValue("PL")
     PL("Poland"),
 
-    /** Portugal. */
+    /**
+     * Portugal.
+     */
     @XmlEnumValue("PT")
     PT("Portugal"),
 
-    /** Puerto Rico. */
+    /**
+     * Puerto Rico.
+     */
     @XmlEnumValue("PR")
     PR("Puerto Rico"),
 
@@ -1005,27 +1112,39 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("QA")
     QA("Qatar"),
 
-    /** Réunion. */
+    /**
+     * Réunion.
+     */
     @XmlEnumValue("RE")
     RE("Réunion"),
 
-    /** Romania. */
+    /**
+     * Romania.
+     */
     @XmlEnumValue("RO")
     RO("Romania"),
 
-    /** Russian Federation. */
+    /**
+     * Russian Federation.
+     */
     @XmlEnumValue("RU")
     RU("Russian Federation"),
 
-    /** Rwanda. */
+    /**
+     * Rwanda.
+     */
     @XmlEnumValue("RW")
     RW("Rwanda"),
 
-    /** Saint Barthélemy. */
+    /**
+     * Saint Barthélemy.
+     */
     @XmlEnumValue("BL")
     BL("Saint Barthélemy"),
 
-    /** Saint Helena. */
+    /**
+     * Saint Helena.
+     */
     @XmlEnumValue("SH")
     SH("Saint Helena"),
 
@@ -1041,7 +1160,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("LC")
     LC("Saint Lucia"),
 
-    /** Saint Martin. */
+    /**
+     * Saint Martin.
+     */
     @XmlEnumValue("MF")
     MF("Saint Martin"),
 
@@ -1111,7 +1232,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("SG")
     SG("Singapore"),
 
-    /** Slovakia. */
+    /**
+     * Slovakia.
+     */
     @XmlEnumValue("SK")
     SK("Slovakia"),
 
@@ -1121,7 +1244,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("SI")
     SI("Slovenia"),
 
-    /** Solomon Islands. */
+    /**
+     * Solomon Islands.
+     */
     @XmlEnumValue("SB")
     SB("Solomon Islands"),
 
@@ -1173,7 +1298,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("SJ")
     SJ("Svalbard and Jan Mayen"),
 
-    /** Swaziland. */
+    /**
+     * Swaziland.
+     */
     @XmlEnumValue("SZ")
     SZ("Swaziland"),
 
@@ -1189,7 +1316,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("CH")
     CH("Switzerland"),
 
-    /** Syrian Arab Republic. */
+    /**
+     * Syrian Arab Republic.
+     */
     @XmlEnumValue("SY")
     SY("Syrian Arab Republic"),
 
@@ -1241,7 +1370,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("TO")
     TO("Tonga"),
 
-    /** Trinidad and Tobago. */
+    /**
+     * Trinidad and Tobago.
+     */
     @XmlEnumValue("TT")
     TT("Trinidad and Tobago"),
 
@@ -1263,7 +1394,9 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("TM")
     TM("Turkmenistan"),
 
-    /** Turks and Caicos Islands. */
+    /**
+     * Turks and Caicos Islands.
+     */
     @XmlEnumValue("TC")
     TC("Turks and Caicos Islands"),
 
@@ -1291,96 +1424,131 @@ public enum ISO_3166_1_alpha2 {
     @XmlEnumValue("AE")
     AE("United Arab Emirates"),
 
-    /** England. This is not officially supported by the standard but provided for compatibility. */
+    /**
+     * England. This is not officially supported by the standard but provided for compatibility.
+     */
     @XmlEnumValue("EN")
     EN("England"),
 
-    /** United Kingdom. */
+    /**
+     * United Kingdom.
+     */
     @XmlEnumValue("GB")
     GB("United Kingdom"),
 
-    /** United Kingdom. This is not officially supported by the standard but provided for compatibility. */
+    /**
+     * United Kingdom. This is not officially supported by the standard but provided for compatibility.
+     */
     @XmlEnumValue("UK")
     UK("United Kingdom"),
 
-    /** United States. */
+    /**
+     * United States.
+     */
     @XmlEnumValue("US")
     US("United States"),
 
-    /** United States Minor Outlying Islands. */
+    /**
+     * United States Minor Outlying Islands.
+     */
     @XmlEnumValue("UM")
     UM("United States Minor Outlying Islands"),
 
-    /** Uruguay. */
+    /**
+     * Uruguay.
+     */
     @XmlEnumValue("UY")
     UY("Uruguay"),
 
-    /** Uzbekistan. */
+    /**
+     * Uzbekistan.
+     */
     @XmlEnumValue("UZ")
     UZ("Uzbekistan"),
 
-    /** Vanuatu. */
+    /**
+     * Vanuatu.
+     */
     @XmlEnumValue("VU")
     VU("Vanuatu"),
 
-    /** Venezuela, Bolivarian Republic of. */
+    /**
+     * Venezuela, Bolivarian Republic of.
+     */
     @XmlEnumValue("VE")
     VE("Venezuela, Bolivarian Republic of"),
 
-    /** Viet Nam. */
+    /**
+     * Viet Nam.
+     */
     @XmlEnumValue("VN")
     VN("Viet Nam"),
 
-    /** Virgin Islands, British. */
+    /**
+     * Virgin Islands, British.
+     */
     @XmlEnumValue("VG")
     VG("Virgin Islands, British"),
 
-    /** Virgin Islands, U.S.. */
+    /**
+     * Virgin Islands, U.S..
+     */
     @XmlEnumValue("VI")
     VI("Virgin Islands, U.S."),
 
-    /** Wallis and Futuna. */
+    /**
+     * Wallis and Futuna.
+     */
     @XmlEnumValue("WF")
     WF("Wallis and Futuna"),
 
-    /** Western Sahara. */
+    /**
+     * Western Sahara.
+     */
     @XmlEnumValue("EH")
     EH("Western Sahara"),
 
-    /** Yemen. */
+    /**
+     * Yemen.
+     */
     @XmlEnumValue("YE")
     YE("Yemen"),
 
-    /** Zambia. */
+    /**
+     * Zambia.
+     */
     @XmlEnumValue("ZM")
     ZM("Zambia"),
 
-    /** Zimbabwe. */
+    /**
+     * Zimbabwe.
+     */
     @XmlEnumValue("ZW")
     ZW("Zimbabwe");
 
-    /** The country name. */
+    /**
+     * The country name.
+     */
     private String name;
-
 
     /**
      * Default constructor.
-     * 
-     * @param name
-     *            The country name.
+     *
+     * @param name The country name.
      */
-    private ISO_3166_1_alpha2(final String name) {
+    ISO_3166_1_alpha2(final String name)
+    {
 
         this.name = name;
     }
 
-
     /**
      * Retrieve the country name.
-     * 
+     *
      * @return The country name.
      */
-    public String getName() {
+    public String getName()
+    {
 
         return this.name;
     }

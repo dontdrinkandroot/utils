@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -34,10 +34,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
 public class DomUtils
 {
-
     public static final Logger LOGGER = LoggerFactory.getLogger(DomUtils.class);
 
     /**
@@ -302,10 +303,8 @@ public class DomUtils
     /**
      * Get a single child of an element by its tag name.
      *
-     * @param element
-     *            The element to search the child for.
-     * @param name
-     *            The tag name of the child to search.
+     * @param element The element to search the child for.
+     * @param name    The tag name of the child to search.
      * @return The child if found or null.
      */
     public static Element getChildByTagName(final Element element, final String name)
@@ -320,10 +319,8 @@ public class DomUtils
     /**
      * Get the element text of a single child of an element by its tag name.
      *
-     * @param element
-     *            The element to search the child for.
-     * @param name
-     *            The tag name of the child to search.
+     * @param element The element to search the child for.
+     * @param name    The tag name of the child to search.
      * @return The element text of the child if found or null if not found or the text is empty.
      */
     public static String getElementText(final Element element, final String name)
@@ -345,12 +342,9 @@ public class DomUtils
     /**
      * Get the attribute text of a single child of an element by its tag name.
      *
-     * @param element
-     *            The element to search the child for.
-     * @param name
-     *            The tag name of the child to search.
-     * @param attrName
-     *            The name of the attribute.
+     * @param element  The element to search the child for.
+     * @param name     The tag name of the child to search.
+     * @param attrName The name of the attribute.
      * @return The attribute text of the child if found or null.
      */
     public static String getAttributeText(final Element element, final String tagName, final String attrName)
@@ -369,10 +363,8 @@ public class DomUtils
     /**
      * Get the children of an element with a specified tag name.
      *
-     * @param element
-     *            The element to search the children for.
-     * @param name
-     *            The tag name of the children to search for.
+     * @param element The element to search the children for.
+     * @param name    The tag name of the children to search for.
      * @return A List of the matching children (can be empty of no children found).
      */
     public static List<Element> getChildrenByTagName(final Element element, final String name)
@@ -396,8 +388,7 @@ public class DomUtils
     /**
      * Checks if the element is null or does only contain whitespace text.
      *
-     * @param element
-     *            The element to check.
+     * @param element The element to check.
      * @return True if the element can be processed.
      */
     protected static boolean checkPreconditions(final Element element)
@@ -421,10 +412,8 @@ public class DomUtils
     /**
      * Checks if the element is null or the attribute is not set or contains only whitespace text.
      *
-     * @param element
-     *            The element to check.
-     * @param attributeName
-     *            The name of the attribute to check.
+     * @param element       The element to check.
+     * @param attributeName The name of the attribute to check.
      * @return True if the attribute can be processed.
      */
     private static boolean checkAttributeProconditions(final Element element, final String attributeName)

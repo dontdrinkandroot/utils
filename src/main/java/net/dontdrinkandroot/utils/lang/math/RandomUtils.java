@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -17,8 +17,11 @@
  */
 package net.dontdrinkandroot.utils.lang.math;
 
-public class RandomUtils {
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
+public class RandomUtils
+{
     public static double PARETO_EIGHTY_PERCENT_UNDER_HUNDRED = .35;
 
     public static double PARETO_EIGHTY_PERCENT_UNDER_THOUSAND = 0.24;
@@ -47,8 +50,6 @@ public class RandomUtils {
      */
     public static double pareto(double alpha)
     {
-
         return Math.pow(1 - Math.random(), -1.0 / alpha) - 1.0;
     }
-
 }

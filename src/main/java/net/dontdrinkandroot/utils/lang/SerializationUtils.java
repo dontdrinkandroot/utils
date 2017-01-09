@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -21,13 +21,14 @@ import org.apache.commons.lang3.SerializationException;
 
 import java.io.*;
 
-
-public class SerializationUtils extends org.apache.commons.lang3.SerializationUtils {
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
+public class SerializationUtils extends org.apache.commons.lang3.SerializationUtils
+{
     @SuppressWarnings("unchecked")
     public static <T extends Serializable> T fastClone(T object)
     {
-
         Object obj = null;
         try {
 
@@ -58,7 +59,6 @@ public class SerializationUtils extends org.apache.commons.lang3.SerializationUt
      */
     public static void serialize(Object obj, OutputStream outputStream)
     {
-
         SerializationUtils.serialize((Serializable) obj, outputStream);
     }
 
@@ -70,7 +70,6 @@ public class SerializationUtils extends org.apache.commons.lang3.SerializationUt
      */
     public static byte[] serialize(Object obj)
     {
-
         return SerializationUtils.serialize((Serializable) obj);
     }
 }

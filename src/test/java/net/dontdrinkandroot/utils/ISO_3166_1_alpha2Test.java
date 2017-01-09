@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -24,13 +24,11 @@ import javax.xml.bind.annotation.XmlEnumValue;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 
-
-public class ISO_3166_1_alpha2Test {
-
+public class ISO_3166_1_alpha2Test
+{
     @Test
     public void test()
     {
-
         ISO_3166_1_alpha2.DE.getName();
 
         Field[] fields = ISO_3166_1_alpha2.class.getDeclaredFields();

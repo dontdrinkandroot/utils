@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2012 Philip W. Sorst <philip@sorst.net>
+/*
+ * Copyright (C) 2012-2017 Philip W. Sorst <philip@sorst.net>
  * and individual contributors as indicated
  * by the @authors tag.
  *
@@ -22,9 +22,11 @@ import java.lang.reflect.Field;
 import java.util.*;
 import java.util.Map.Entry;
 
-
-public class CommandLineArgumentParser {
-
+/**
+ * @author Philip Washington Sorst <philip@sorst.net>
+ */
+public class CommandLineArgumentParser
+{
     private boolean parsed = false;
 
     private final Object annotatedObject;
@@ -37,13 +39,11 @@ public class CommandLineArgumentParser {
 
     public CommandLineArgumentParser(final Object annotatedObject)
     {
-
         this.annotatedObject = annotatedObject;
     }
 
     public final void evaluateArguments(final String[] args)
     {
-
         if (!this.parsed) {
             this.parse();
         }
@@ -125,7 +125,6 @@ public class CommandLineArgumentParser {
 
     public final boolean hasErrors()
     {
-
         if (this.errors == null) {
             return false;
         }
@@ -137,13 +136,11 @@ public class CommandLineArgumentParser {
 
     public final void printErrors()
     {
-
         System.out.println(this.errors);
     }
 
     public final void printUsage()
     {
-
         if (!this.parsed) {
             this.parse();
         }
@@ -181,7 +178,6 @@ public class CommandLineArgumentParser {
 
     private Set<String> findRequiredNames()
     {
-
         final Set<String> requiredNames = new HashSet<String>();
         for (final Entry<String, CommandLineArgument> entry : this.annotatedArguments.entrySet()) {
             if (entry.getValue().required()) {
@@ -194,49 +190,41 @@ public class CommandLineArgumentParser {
 
     private boolean isBoolean(final Field field)
     {
-
         return boolean.class.isAssignableFrom(field.getType()) || Boolean.class.isAssignableFrom(field.getType());
     }
 
     private boolean isFile(final Field field)
     {
-
         return File.class.isAssignableFrom(field.getType());
     }
 
     private boolean isDouble(final Field field)
     {
-
         return double.class.isAssignableFrom(field.getType()) || Double.class.isAssignableFrom(field.getType());
     }
 
     private boolean isInt(final Field field)
     {
-
         return int.class.isAssignableFrom(field.getType()) || Integer.class.isAssignableFrom(field.getType());
     }
 
     private boolean isLong(final Field field)
     {
-
         return long.class.isAssignableFrom(field.getType()) || Long.class.isAssignableFrom(field.getType());
     }
 
     private boolean isFloat(final Field field)
     {
-
         return float.class.isAssignableFrom(field.getType()) || Float.class.isAssignableFrom(field.getType());
     }
 
     private boolean isString(final Field field)
     {
-
         return String.class.isAssignableFrom(field.getType());
     }
 
     private void parse()
     {
-
         this.annotatedArguments = new HashMap<String, CommandLineArgument>();
         this.fields = new HashMap<String, Field>();
 
@@ -258,49 +246,41 @@ public class CommandLineArgumentParser {
 
     private void setBoolean(final Field field)
     {
-
         this.setField(field, true);
     }
 
     private void setFile(final Field field, final String value)
     {
-
         this.setField(field, new File(value));
     }
 
     private void setInt(final Field field, final String value)
     {
-
         this.setField(field, Integer.valueOf(value));
     }
 
     private void setDouble(final Field field, final String value)
     {
-
         this.setField(field, Double.valueOf(value));
     }
 
     private void setFloat(final Field field, final String value)
     {
-
         this.setField(field, Float.valueOf(value));
     }
 
     private void setLong(final Field field, final String value)
     {
-
         this.setField(field, Long.valueOf(value));
     }
 
     private void setString(final Field field, final String value)
     {
-
         this.setField(field, value);
     }
 
     private void setField(Field field, Object value)
     {
-
         try {
 
             field.setAccessible(true);
@@ -311,5 +291,4 @@ public class CommandLineArgumentParser {
             this.errors.append(e.getMessage() + "\n");
         }
     }
-
 }
