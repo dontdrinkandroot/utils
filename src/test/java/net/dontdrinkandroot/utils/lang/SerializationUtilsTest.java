@@ -18,7 +18,7 @@
 package net.dontdrinkandroot.utils.lang;
 
 import org.junit.Assert;
-import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Date;
@@ -28,10 +28,9 @@ import java.util.Vector;
 public class SerializationUtilsTest
 {
     @Test
+    @Ignore
     public void clonePerformanceTest()
     {
-        Assume.assumeTrue(false);
-
         /*
          * Make a reasonable large test object. Note that this doesn't do anything useful -- it is simply intended to be
          * large, have several levels of references, and be somewhat random. We start with a hashtable and add vectors
